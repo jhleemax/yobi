@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_login_normal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_login_normal_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_login_normal_backspace_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:text="backspace"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_login_normal_02"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_login_normal_01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout_login_normal_03">
+        <TextView
+            android:id="@+id/textView_login_normal_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"/>
+        <EditText
+            android:id="@+id/editText_login_normal_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="이메일을 입력해주세요."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_login_normal_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"/>
+
+        <TextView
+            android:id="@+id/textView_login_normal_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/editText_login_normal_email"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"/>
+        <EditText
+            android:id="@+id/editText_login_normal_pwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호를 입력해주세요."
+            app:layout_constraintTop_toBottomOf="@id/textView_login_normal_pwd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_login_normal_03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Button
+            android:id="@+id/button_login_normal_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
