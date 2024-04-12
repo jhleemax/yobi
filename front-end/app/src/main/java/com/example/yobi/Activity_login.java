@@ -24,6 +24,7 @@ public class Activity_login extends AppCompatActivity {
             return insets;
         });
 
+        // 테스트용
         TextView temp = findViewById(R.id.textView_login_register);
         temp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +33,14 @@ public class Activity_login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView temp2 = findViewById(R.id.textView_login_login);
+        temp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_login.this, Activity_login_normal.class);
+                startActivity(intent);
+            }
+        });
+        //
     }
 }
