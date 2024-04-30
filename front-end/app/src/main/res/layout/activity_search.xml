@@ -104,15 +104,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_01_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_01_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_01_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -125,15 +128,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_02_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_02_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_02_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -146,15 +152,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_03_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_03_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_03_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -167,15 +176,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_04_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_04_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_04_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -188,15 +200,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_05_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_05_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_05_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -209,15 +224,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_06_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_06_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_06_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -230,15 +248,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_07_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_07_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_07_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -251,15 +272,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_08_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_08_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_08_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -272,15 +296,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_09_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_09_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_09_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
@@ -293,15 +320,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <TextView
+                android:id="@+id/textView_search_hot_10_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
             <TextView
+                android:id="@+id/textView_search_hot_10_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
             <TextView
+                android:id="@+id/textView_search_hot_10_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="▲"
