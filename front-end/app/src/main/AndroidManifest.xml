@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Yobi"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_recipe"
+            android:exported="false" />
+        <activity
             android:name=".Activity_search_filter"
             android:exported="false" />
         <activity
