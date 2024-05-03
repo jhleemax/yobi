@@ -26,10 +26,9 @@ public class DefRecipeController {
         return ResponseEntity.ok().body(Send_Data);
     }
 
-
-//    @GetMapping(value = "/api/{RCP_SEQ}")
-//    public ResponseEntity<?> getRecipe(@PathVariable("RCP_SEQ") String userId){
-//        ResponseMemberDTO member = memberService.getMemberById(userId);
-//        return ResponseEntity.ok().body(member);
-//    }
+    @GetMapping(value = "/api/{RCP_NM}")
+    public ResponseEntity<?> namesearch(@PathVariable("RCP_NM") String rcp_NM) {
+        List<DefRecipe> Search_Data = defRecipeService.SearchDefrecipe(rcp_NM);
+        return ResponseEntity.ok().body(Search_Data);
+    }
 }

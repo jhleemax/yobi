@@ -18,7 +18,7 @@ public class DefRecipe {
     private String RCP_SEQ;
 
     @Column(name = "RCP_NM")
-    private String RCP_NM;
+    private String RCPNM;
 
     @Column(name = "RCP_WAY2")
     private String RCP_WAY2;

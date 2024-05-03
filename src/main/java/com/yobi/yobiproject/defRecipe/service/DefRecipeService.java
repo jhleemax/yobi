@@ -26,6 +26,11 @@ public class DefRecipeService {
         return defRecipe;
 
     }
+
+    public List<DefRecipe> SearchDefrecipe(String rcpNM) {
+        List<DefRecipe> searchRecipe = defRecipeRepository.findAllByRCPNMContaining(rcpNM);
+        return searchRecipe;
+    }
     public void fetchDataAndPrint() {
         try {
             String apiURL = "http://openapi.foodsafetykorea.go.kr/api/" +
@@ -50,7 +55,7 @@ public class DefRecipeService {
                 DefRecipe defRecipe = new DefRecipe();
 
                 defRecipe.setRCP_SEQ(recipe.get("RCP_SEQ").toString());
-                defRecipe.setRCP_NM(recipe.get("RCP_NM").toString());
+                defRecipe.setRCPNM(recipe.get("RCP_NM").toString());
                 defRecipe.setRCP_WAY2(recipe.get("RCP_WAY2").toString());
                 defRecipe.setRCP_PAT2(recipe.get("RCP_PAT2").toString());
                 defRecipe.setINFO_WGT(recipe.get("INFO_WGT").toString());

@@ -7,4 +7,5 @@ import java.util.List;
 public interface DefRecipeRepository extends JpaRepository<DefRecipe, Long> {
 
     List<DefRecipe> findAll(); // 모든 api레시피 조회
+    List<DefRecipe> findAllByRCPNMContaining(String rcpNM);
 }
