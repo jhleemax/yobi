@@ -1,26 +1,27 @@
 package com.yobi.yobiproject.recipe.controller;
 
 import com.yobi.yobiproject.member.dto.MemberDTO;
+import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import com.yobi.yobiproject.recipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
+
 @RestController
 @ResponseBody
 @RequiredArgsConstructor
 public class RecipeController {
     private final RecipeService recipeService;
 
-    @PostMapping(value = "/recipe/write") // 조회 방식 미구현
+    @PostMapping(value = "/recipe/write")
     public ResponseEntity<?> write(@RequestBody WriteRecipeDTO writeRecipeDTO){
         recipeService.save(writeRecipeDTO);
         return ResponseEntity.noContent().build();
     }
+
 }

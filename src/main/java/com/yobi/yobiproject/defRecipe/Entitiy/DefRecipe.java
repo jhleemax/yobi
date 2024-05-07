@@ -15,7 +15,7 @@ import lombok.*;
 public class DefRecipe {
     @Id
     @Column(name = "RCP_SEQ")
-    private String RCP_SEQ;
+    private String RCPSEQ;
 
     @Column(name = "RCP_NM")
     private String RCPNM;

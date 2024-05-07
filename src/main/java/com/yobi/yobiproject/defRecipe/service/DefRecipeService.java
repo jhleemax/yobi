@@ -27,6 +27,11 @@ public class DefRecipeService {
 
     }
 
+    public List<DefRecipe> ReadDefrecipe(String rcpSEQ) {
+        List<DefRecipe> readRecipe = defRecipeRepository.findByRCPSEQ(rcpSEQ);
+        return readRecipe;
+    }
+
     public List<DefRecipe> SearchDefrecipe(String rcpNM) {
         List<DefRecipe> searchRecipe = defRecipeRepository.findAllByRCPNMContaining(rcpNM);
         return searchRecipe;
@@ -54,7 +59,7 @@ public class DefRecipeService {
                 JSONObject recipe = (JSONObject) obj;
                 DefRecipe defRecipe = new DefRecipe();
 
-                defRecipe.setRCP_SEQ(recipe.get("RCP_SEQ").toString());
+                defRecipe.setRCPSEQ(recipe.get("RCP_SEQ").toString());
                 defRecipe.setRCPNM(recipe.get("RCP_NM").toString());
                 defRecipe.setRCP_WAY2(recipe.get("RCP_WAY2").toString());
                 defRecipe.setRCP_PAT2(recipe.get("RCP_PAT2").toString());
