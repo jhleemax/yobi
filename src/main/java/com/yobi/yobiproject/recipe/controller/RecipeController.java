@@ -24,4 +24,10 @@ public class RecipeController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping(value = "/recipe/rcplist")
+    public ResponseEntity<?> rcplist() { // 모든 레시피 정보 반환
+        List<Recipe> Send_Data = recipeService.SendRecipe();
+        return ResponseEntity.ok().body(Send_Data);
+    }
+
 }
