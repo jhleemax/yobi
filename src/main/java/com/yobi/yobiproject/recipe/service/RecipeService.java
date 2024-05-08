@@ -21,4 +21,9 @@ public class RecipeService {
         return recipe;
     }
 
+    public Recipe ReadRecipe(int rcpnum) {
+        Recipe recipe = recipeRepository.findByRecipeNum(rcpnum);
+        return recipe;
+    }
+
 }

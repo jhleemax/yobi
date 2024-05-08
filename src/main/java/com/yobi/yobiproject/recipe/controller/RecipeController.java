@@ -30,4 +30,10 @@ public class RecipeController {
         return ResponseEntity.ok().body(Send_Data);
     }
 
+    @GetMapping(value = "/recipe/{recipe_num}")
+    public ResponseEntity<?> readrcp(@PathVariable("recipe_num") int rcpNum) { // 레시피 상세보기
+        Recipe Read_Data = recipeService.ReadRecipe(rcpNum);
+        return ResponseEntity.ok().body(Read_Data);
+    }
+
 }
