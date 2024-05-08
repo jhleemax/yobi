@@ -167,6 +167,7 @@
     </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_recipe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -203,7 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_home"
+                    android:id="@+id/appCompatButton_main_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="홈"
@@ -213,7 +214,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="홈"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_home"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -226,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_recipe"
+                    android:id="@+id/appCompatButton_main_recipe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="레시피"
@@ -236,7 +237,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="레시피"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_recipe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -249,7 +250,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_community"
+                    android:id="@+id/appCompatButton_main_community"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티"
@@ -259,7 +260,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_community"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_community"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -272,7 +273,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_my"
+                    android:id="@+id/appCompatButton_main_my"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MY"
@@ -282,7 +283,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="MY"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_my"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_my"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>

@@ -83,6 +83,7 @@
                 app:layout_constraintTop_toTopOf="@id/view_recipe_itemlist_02"
                 app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"/>
             <TextView
+                android:id="@+id/textView_recipe_itemlist_05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="중급"
@@ -96,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
+            android:id="@+id/textView_recipe_itemlist_06"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="소고기, 두부, 무, 양파, 된장, 쌈장 등" />
