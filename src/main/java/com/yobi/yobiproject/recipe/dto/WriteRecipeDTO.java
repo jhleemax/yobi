@@ -9,10 +9,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class WriteRecipeDTO {
     private String userId;
-    private String recipe_Category;
+    private String recipeCategory;
     private String foodName;
-    private String recipe_Content;
+    private String recipeContent;
     private String material;
-    private String recipe_Image;
+    private String recipeImage;
     private String ingredient;
 }

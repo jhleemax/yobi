@@ -20,18 +20,18 @@ public class DefRecipeController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/api/defrecipe")
-    public ResponseEntity<?> defrecipe() {
+    @PostMapping(value = "/api/list")
+    public ResponseEntity<?> list() {
         List<DefRecipe> Send_Data = defRecipeService.SendDefrecipe();
         return ResponseEntity.ok().body(Send_Data);
     }
-    @GetMapping(value = "/api/{RCP_NM}")
-    public ResponseEntity<?> namesearch(@PathVariable("RCP_NM") String rcp_NM) {
+    @GetMapping(value = "/api/search/{RCP_NM}")
+    public ResponseEntity<?> search(@PathVariable("RCP_NM") String rcp_NM) {
         List<DefRecipe> Search_Data = defRecipeService.SearchDefrecipe(rcp_NM);
         return ResponseEntity.ok().body(Search_Data);
     }
 
-    @GetMapping(value = "/readapi/{RCP_SEQ}")
+    @GetMapping(value = "/api/read/{RCP_SEQ}")
     public ResponseEntity<?> read(@PathVariable("RCP_SEQ") String rcp_SEQ) {
         List<DefRecipe> Read_Data = defRecipeService.ReadDefrecipe(rcp_SEQ);
         return ResponseEntity.ok().body(Read_Data);

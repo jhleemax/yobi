@@ -22,16 +22,16 @@ public class Recipe {
     private String userId;
 
     @Column(name = "recipe_category")
-    private String recipe_Category;
+    private String recipeCategory;
 
     @Column(name = "recipe_content")
-    private String recipe_Content;
+    private String recipeContent;
 
     @Column(name = "recipe_image")
-    private String recipe_Image;
+    private String recipeImage;
 
     @Column(name = "recipe_nice")
-    private int recipe_Nice;
+    private int recipeNice;
 
     @Column(name = "foodname")
     private String foodName;
@@ -43,15 +43,15 @@ public class Recipe {
     private String material;
 
     @Column(name = "recipe_report")
-    private int  recipe_Report;
+    private int  recipeReport;
 
     @Builder
     public static Recipe toRecipe(WriteRecipeDTO writeRecipeDTO) {
         Recipe recipe = new Recipe();
         recipe.setUserId(writeRecipeDTO.getUserId());
-        recipe.setRecipe_Category(writeRecipeDTO.getRecipe_Category());
-        recipe.setRecipe_Image(writeRecipeDTO.getRecipe_Image());
-        recipe.setRecipe_Content(writeRecipeDTO.getRecipe_Content());
+        recipe.setRecipeCategory(writeRecipeDTO.getRecipeCategory());
+        recipe.setRecipeImage(writeRecipeDTO.getRecipeImage());
+        recipe.setRecipeContent(writeRecipeDTO.getRecipeContent());
         recipe.setFoodName(writeRecipeDTO.getFoodName());
         recipe.setIngredient(writeRecipeDTO.getIngredient());
         recipe.setMaterial(writeRecipeDTO.getMaterial());
