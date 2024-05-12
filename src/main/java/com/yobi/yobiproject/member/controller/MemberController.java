@@ -48,4 +48,10 @@ public class MemberController {
         }
     }
 
+    @GetMapping(value = "/user/delete/{userId}")
+    public ResponseEntity<?> DeleteUser(@PathVariable("userId") String userId) { // 보안 검사 미구현
+        memberService.delete(userId);
+        return ResponseEntity.ok().build();
+    }
+
 }

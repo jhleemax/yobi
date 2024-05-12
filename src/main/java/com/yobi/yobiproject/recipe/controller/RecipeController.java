@@ -1,6 +1,7 @@
 package com.yobi.yobiproject.recipe.controller;
 
 import com.yobi.yobiproject.recipe.Entity.Recipe;
+import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import com.yobi.yobiproject.recipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class RecipeController {
     }
 
     @PostMapping(value = "/recipe/list")
-    public ResponseEntity<?> list() { // 모든 레시피 정보 반환
+    public ResponseEntity<?> list() { // 모든 사용자 레시피 정보 반환
         List<Recipe> Send_Data = recipeService.SendRecipe();
         return ResponseEntity.ok().body(Send_Data);
     }
@@ -49,6 +50,13 @@ public class RecipeController {
     public ResponseEntity<?> delete(@PathVariable("recipe_num") int rcpNum) { // 사용자 레시피 삭제
         // 현재 보안 요소 미구현(사용자가 일치하는지 등)
         recipeService.DeleteRecipe(rcpNum);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping(value = "/recipe/update/{recipe_num}")
+    public ResponseEntity<?> update(@PathVariable("recipe_num") int rcpNum,
+                                    @RequestBody UpdateRecipeDTO updateRecipeDTO) { // 사용자 레시피 수정
+        recipeService.Update(updateRecipeDTO, rcpNum);
         return ResponseEntity.ok().build();
     }
 
