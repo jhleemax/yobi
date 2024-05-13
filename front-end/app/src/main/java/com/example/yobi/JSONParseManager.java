@@ -1,9 +1,7 @@
 package com.example.yobi;
 import android.util.Log;
 
-import com.example.yobi.RecipeOrder;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.regex.Pattern;
@@ -15,6 +13,14 @@ public class JSONParseManager {
 
     JSONParseManager(String json) { jsonString = json; };
     void splitJSON() {
+        if(jsonString == null) {
+            Log.e("jsonparserMessage", "파싱할 json null");
+            return;
+        }
+
+        if(jsonString.startsWith("[")) jsonString = jsonString.substring(1);
+        if(jsonString.endsWith("]")) jsonString = jsonString.substring(0, jsonString.length() - 1);
+
         splitedJSONString = jsonString.split(Pattern.quote("}"));
 
         for(int i = 0; i < splitedJSONString.length; i++) {
@@ -23,6 +29,7 @@ public class JSONParseManager {
             if(splitedJSONString[i].startsWith(",")) splitedJSONString[i] = splitedJSONString[i].substring(1);;
             splitedJSONString[i] = splitedJSONString[i].trim();
 //            System.out.println(s);
+            Log.e("JSONParserManager.splitJSON()", splitedJSONString[i]);
         }
         StringToObject = new RecipeOrder[splitedJSONString.length];
     }
@@ -32,19 +39,27 @@ public class JSONParseManager {
     }
 
     RecipeOrder[] getObject() {
+        Log.e("JSONParserManager.getObject()", "start");
         ObjectMapper mapper = new ObjectMapper();
         RecipeOrder[] StringToObject = new RecipeOrder[splitedJSONString.length];
 
         try {
+            Log.e("JSONParserManager.getObject()", "정상");
             int i = 0;
             for(String s : splitedJSONString) {
 //                System.out.println(s);
-                StringToObject[i++] = mapper.readValue(s, RecipeOrder.class);
-                //Log.e("my log : ", StringToObject[i++].getRcp_NM());
+                StringToObject[i] = mapper.readValue(s, RecipeOrder.class);
+                Log.e("my log : ", StringToObject[i].getAtt_FILE_NO_MAIN());
+                Log.e("my log : ", StringToObject[i].getRcpnm());
+                Log.e("my log : ", StringToObject[i].getRcp_PAT2());
+                Log.e("my log : ", StringToObject[i].getInfo_WGT());
+                Log.e("my log : ", StringToObject[i].getRcp_PARTS_DTLS());
+                i++;
                 //System.out.println(StringToObject[i++].getRcp_NM());
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+            Log.e("JSONParserManager.getObject()", "에러");
         }
 
         return StringToObject;

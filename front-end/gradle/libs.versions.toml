@@ -11,6 +11,7 @@ navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
 jacksonDatabind = "2.17.1"
 glide = "5.0.0-rc01"
+picasso = "2.71828"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,6 +25,7 @@ navigation-fragment = { group = "androidx.navigation", name = "navigation-fragme
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jacksonDatabind" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

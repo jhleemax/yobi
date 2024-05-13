@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.jackson.databind)
     implementation(libs.glide)
+    implementation(libs.picasso)
     annotationProcessor(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

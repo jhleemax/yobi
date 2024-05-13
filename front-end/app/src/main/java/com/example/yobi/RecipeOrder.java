@@ -1,18 +1,16 @@
 package com.example.yobi;
 
-import java.util.Vector;
-
 public class RecipeOrder {
     String att_FILE_NO_MAIN;
     String
             info_NA,
-            rcp_SEQ,
+            rcpseq,
             info_PRO,
             info_ENG,
             rcp_PAT2,
             info_WGT,
             info_CAR,
-            rcp_NM,
+            rcpnm,
             rcp_WAY2,
             att_FILE_NO_MK,
             manual01,
@@ -67,8 +65,8 @@ public class RecipeOrder {
         return info_NA;
     }
 
-    public String getRcp_SEQ() {
-        return rcp_SEQ;
+    public String getRcpseq() {
+        return rcpseq;
     }
 
     public String getInfo_PRO() {
@@ -91,8 +89,8 @@ public class RecipeOrder {
         return info_CAR;
     }
 
-    public String getRcp_NM() {
-        return rcp_NM;
+    public String getRcpnm() {
+        return rcpnm;
     }
 
     public String getRcp_WAY2() {
@@ -283,13 +281,13 @@ public class RecipeOrder {
     public RecipeOrder(String att_FILE_NO_MAIN, String info_NA, String rcp_SEQ, String info_PRO, String info_ENG, String rcp_PAT2, String info_WGT, String info_CAR, String rcp_NM, String rcp_WAY2, String att_FILE_NO_MK, String manual01, String manual03, String manual05, String manual_IMG05, String manual_IMG02, String manual_IMG03, String manual02, String manual_IMG04, String rcp_PARTS_DTLS, String manual_IMG01, String manual06, String info_FAT, String manual04, String hash_TAG, String manual_IMG13, String manual11, String manual14, String manual08, String manual_IMG07, String manual_IMG09, String manual07, String manual_IMG10, String manual_IMG08, String manual09, String manual_IMG06, String manual10, String manual_IMG12, String manual_IMG11, String manual13, String manual12, String manual17, String manual_IMG15, String manual_IMG18, String manual19, String manual_IMG14, String manual20, String rcp_NA_TIP, String manual_IMG17, String manual_IMG20, String manual15, String manual_IMG16, String manual18, String manual_IMG19, String manual16) {
         this.att_FILE_NO_MAIN = att_FILE_NO_MAIN;
         this.info_NA = info_NA;
-        this.rcp_SEQ = rcp_SEQ;
+        this.rcpseq = rcp_SEQ;
         this.info_PRO = info_PRO;
         this.info_ENG = info_ENG;
         this.rcp_PAT2 = rcp_PAT2;
         this.info_WGT = info_WGT;
         this.info_CAR = info_CAR;
-        this.rcp_NM = rcp_NM;
+        this.rcpnm = rcp_NM;
         this.rcp_WAY2 = rcp_WAY2;
         this.att_FILE_NO_MK = att_FILE_NO_MK;
         this.manual01 = manual01;
