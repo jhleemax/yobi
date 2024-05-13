@@ -4,6 +4,7 @@ import com.yobi.yobiproject.recipe.Entity.RecipeRepository;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -96,10 +97,11 @@ public class RecipeService {
         return recipe;
     }
 
-    public void LikeRecipe(int rcpnum) { // 사용자 레시피 좋아요 추가
+    public HttpStatus LikeRecipe(int rcpnum) { // 사용자 레시피 좋아요 추가
         Recipe recipe = recipeRepository.findByRecipeNum(rcpnum);
         recipe.setRecipeNice(recipe.getRecipeNice() + 1);
         recipeRepository.save(recipe);
+        return HttpStatus.OK;
     }
 
     public void UnLikeRecipe(int rcpnum) { // 사용자 레시피 좋아요 취소

@@ -36,8 +36,7 @@ public class RecipeController {
 
     @GetMapping(value = "/recipe/like/{recipe_num}")
     public ResponseEntity<?> like(@PathVariable("recipe_num") int rcpNum) { // 사용자 레시피 좋아요
-        recipeService.LikeRecipe(rcpNum);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(recipeService.LikeRecipe(rcpNum)).body(""); // 이렇게 다 바꿔야함(서비스포함)
     }
 
     @GetMapping(value = "/recipe/unlike/{recipe_num}")

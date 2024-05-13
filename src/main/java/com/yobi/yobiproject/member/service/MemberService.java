@@ -35,6 +35,9 @@ public class MemberService {
     public boolean check(LoginMemberDTO loginMemberDTO) {
         boolean result;
         Member member = memberRepository.findByUserId(loginMemberDTO.getUserId());
+        if(member == null) {
+            return false;
+        }
         if(loginMemberDTO.getUserPass().equals(member.getUserPass())) {
             result = true;
         }

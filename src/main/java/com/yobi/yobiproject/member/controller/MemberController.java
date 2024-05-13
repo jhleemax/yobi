@@ -39,6 +39,9 @@ public class MemberController {
 
     @PostMapping(value = "/user/login")
     public boolean loginUser(@RequestBody LoginMemberDTO loginMemberDTO) {
+        if(loginMemberDTO.getUserId() == null || loginMemberDTO.getUserPass() == null) {
+            return false;
+        }
         boolean result = memberService.check(loginMemberDTO);
         if(result) {
             return true;
@@ -53,5 +56,4 @@ public class MemberController {
         memberService.delete(userId);
         return ResponseEntity.ok().build();
     }
-
 }
