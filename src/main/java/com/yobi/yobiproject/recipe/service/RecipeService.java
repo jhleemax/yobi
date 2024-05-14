@@ -1,4 +1,6 @@
 package com.yobi.yobiproject.recipe.service;
+import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
+import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.Entity.RecipeRepository;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
@@ -7,12 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class RecipeService {
     private final RecipeRepository recipeRepository;
+    private final DefRecipeService defRecipeService;
     public void save(WriteRecipeDTO writeRecipeDTO) {
         Recipe recipe = Recipe.toRecipe(writeRecipeDTO);
         recipeRepository.save(recipe);
@@ -113,6 +117,15 @@ public class RecipeService {
     public void DeleteRecipe(int rcpnum) { // 사용자 레시피 삭제
         Recipe recipe = recipeRepository.findByRecipeNum(rcpnum);
         recipeRepository.delete(recipe);
+    }
+
+    public List<Object> SearchRecipe(String foodName) { // 레시피 통합 조회
+        List<Object> searchData = new ArrayList<>();
+        List<DefRecipe> ApiData = defRecipeService.SearchDefrecipe(foodName);
+        List<Recipe> RecipeData = recipeRepository.findAllByFoodNameContaining(foodName);
+        searchData.addAll(ApiData);
+        searchData.addAll(RecipeData);
+        return searchData;
     }
 
 }
