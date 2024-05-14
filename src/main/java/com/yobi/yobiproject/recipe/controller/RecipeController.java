@@ -1,5 +1,7 @@
 package com.yobi.yobiproject.recipe.controller;
 
+import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
+import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
@@ -36,7 +38,7 @@ public class RecipeController {
 
     @GetMapping(value = "/recipe/like/{recipe_num}")
     public ResponseEntity<?> like(@PathVariable("recipe_num") int rcpNum) { // 사용자 레시피 좋아요
-        return ResponseEntity.status(recipeService.LikeRecipe(rcpNum)).body(""); // 이렇게 다 바꿔야함(서비스포함)
+        return ResponseEntity.status(recipeService.LikeRecipe(rcpNum)).body(""); // 이렇게 다 바꿔야함(서비스포함) -> 방학때 바꿉시다.
     }
 
     @GetMapping(value = "/recipe/unlike/{recipe_num}")
@@ -57,6 +59,11 @@ public class RecipeController {
                                     @RequestBody UpdateRecipeDTO updateRecipeDTO) { // 사용자 레시피 수정
         recipeService.Update(updateRecipeDTO, rcpNum);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/recipe/search/{foodName}")
+    public ResponseEntity<?> search(@PathVariable("foodName") String foodName) { // 레시피 통합조회
+        return ResponseEntity.ok().body(recipeService.SearchRecipe(foodName));
     }
 
 }

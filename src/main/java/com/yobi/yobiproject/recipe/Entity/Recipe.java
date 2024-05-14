@@ -1,6 +1,5 @@
 package com.yobi.yobiproject.recipe.Entity;
 
-import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,6 +12,7 @@ import lombok.*;
 @Table(name = "recipe")
 public class Recipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recipe_num")
     private int recipeNum;
 
