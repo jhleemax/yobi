@@ -8,5 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class DeleteRecipeDTO {
+    private int recipeNum;
     private String userId;
 }

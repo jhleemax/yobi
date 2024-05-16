@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class UpdateRecipeDTO {
+    private int rcpNum;
     private String recipeCategory;
     private String foodName;
     private String material;
