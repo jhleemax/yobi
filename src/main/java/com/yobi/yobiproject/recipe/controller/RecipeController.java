@@ -51,11 +51,14 @@ public class RecipeController {
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping(value = "/recipe/delete/{recipe_num}")
-    public ResponseEntity<?> delete(@PathVariable("recipe_num") int rcpNum,
-                                    @RequestBody DeleteRecipeDTO deleteRecipeDTO) { // 사용자 레시피 삭제
-        return ResponseEntity.status(recipeService.DeleteRecipe(rcpNum,deleteRecipeDTO)).build();
+    @GetMapping(value = "/recipe/delete/{recipe_num}")
+    public ResponseEntity<?> delete(@PathVariable("recipe_num") int rcpNum) {
+        recipeService.Delete(rcpNum);
+        return ResponseEntity.ok().build();
+
     }
+
+
 
     @PatchMapping(value = "/recipe/update/{recipe_num}")
     public ResponseEntity<?> update(@PathVariable("recipe_num") int rcpNum,
