@@ -125,8 +125,20 @@ public class RecipeService {
         recipeRepository.save(recipe);
     }
 
-    public void Delete(int rcpnum) {
-        recipeRepository.delete(recipeRepository.findByRecipeNum(rcpnum));
+    public HttpStatus Delete(DeleteRecipeDTO deleteRecipeDTO) {
+        Recipe recipe = recipeRepository.findByRecipeNum(deleteRecipeDTO.getRecipeNum());
+        if(recipe != null) {
+            if(recipe.getUserId().equals(deleteRecipeDTO.getUserId())) {
+                recipeRepository.delete(recipe);
+                return HttpStatus.OK;
+            }
+            else {
+                throw new CustomException(CustomErrorCode.USER_NOT_IDEQUAL);
+            }
+        }
+        else {
+            throw new CustomException(CustomErrorCode.RECIPE_NOT_FOUND);
+        }
     }
 
     public List<Recipe> UserRecipe(String userid) { // 사용자 레시피 조회
