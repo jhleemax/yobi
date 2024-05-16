@@ -1,6 +1,7 @@
 package com.yobi.yobiproject.member.Entity;
 
 import com.yobi.yobiproject.member.dto.MemberDTO;
+import com.yobi.yobiproject.recipe.Entity.Recipe;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

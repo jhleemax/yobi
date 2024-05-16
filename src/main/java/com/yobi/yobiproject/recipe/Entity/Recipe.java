@@ -1,5 +1,6 @@
 package com.yobi.yobiproject.recipe.Entity;
 
+import com.yobi.yobiproject.member.Entity.Member;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import jakarta.persistence.*;
 import lombok.*;

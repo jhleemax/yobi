@@ -12,6 +12,7 @@ public class UpdateRecipeDTO {
     private String foodName;
     private String material;
     private String ingredient;
+    private String userId;
 
     private String recipeManual01;
     private String recipeImage01;

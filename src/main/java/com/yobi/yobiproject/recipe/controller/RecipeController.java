@@ -2,11 +2,15 @@ package com.yobi.yobiproject.recipe.controller;
 
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
 import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
+import com.yobi.yobiproject.exception.CustomErrorCode;
+import com.yobi.yobiproject.exception.CustomException;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
+import com.yobi.yobiproject.recipe.dto.DeleteRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import com.yobi.yobiproject.recipe.service.RecipeService;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +23,7 @@ public class RecipeController {
     private final RecipeService recipeService;
 
     @PostMapping(value = "/recipe/write") // 레시피 글쓰기
-    public ResponseEntity<?> write(@RequestBody WriteRecipeDTO writeRecipeDTO){
+    public ResponseEntity<?> write(@RequestBody WriteRecipeDTO writeRecipeDTO) {
         recipeService.save(writeRecipeDTO);
         return ResponseEntity.noContent().build();
     }
@@ -38,7 +42,7 @@ public class RecipeController {
 
     @GetMapping(value = "/recipe/like/{recipe_num}")
     public ResponseEntity<?> like(@PathVariable("recipe_num") int rcpNum) { // 사용자 레시피 좋아요
-        return ResponseEntity.status(recipeService.LikeRecipe(rcpNum)).body(""); // 이렇게 다 바꿔야함(서비스포함) -> 방학때 바꿉시다.
+        return ResponseEntity.status(recipeService.LikeRecipe(rcpNum)).body("");
     }
 
     @GetMapping(value = "/recipe/unlike/{recipe_num}")
@@ -47,18 +51,16 @@ public class RecipeController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/recipe/delete/{recipe_num}")
-    public ResponseEntity<?> delete(@PathVariable("recipe_num") int rcpNum) { // 사용자 레시피 삭제
-        // 현재 보안 요소 미구현(사용자가 일치하는지 등)
-        recipeService.DeleteRecipe(rcpNum);
-        return ResponseEntity.ok().build();
+    @PatchMapping(value = "/recipe/delete/{recipe_num}")
+    public ResponseEntity<?> delete(@PathVariable("recipe_num") int rcpNum,
+                                    @RequestBody DeleteRecipeDTO deleteRecipeDTO) { // 사용자 레시피 삭제
+        return ResponseEntity.status(recipeService.DeleteRecipe(rcpNum,deleteRecipeDTO)).build();
     }
 
     @PatchMapping(value = "/recipe/update/{recipe_num}")
     public ResponseEntity<?> update(@PathVariable("recipe_num") int rcpNum,
                                     @RequestBody UpdateRecipeDTO updateRecipeDTO) { // 사용자 레시피 수정
-        recipeService.Update(updateRecipeDTO, rcpNum);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(recipeService.Update(updateRecipeDTO,rcpNum)).build();
     }
 
     @GetMapping(value = "/recipe/search/{foodName}")
@@ -66,4 +68,8 @@ public class RecipeController {
         return ResponseEntity.ok().body(recipeService.SearchRecipe(foodName));
     }
 
+    @GetMapping(value = "/recipe/user/{userid}")
+    public ResponseEntity<?> userRecipe(@PathVariable("userid") String userid) { // 사용자의 레시피 조회
+        return ResponseEntity.ok().body(recipeService.UserRecipe(userid));
+    }
 }
