@@ -25,13 +25,33 @@ public class MemberService {
             throw new CustomException(CustomErrorCode.USER_ALREADY_EXISTS);
         }
         else {
-            Member newMember = Member.toMember(memberDTO);
-            memberRepository.save(newMember);
-            return HttpStatus.OK;
+            if(memberDTO.getUserId().length() > 15) {
+                throw new CustomException(CustomErrorCode.SIGNID_LONG_REQUEST);
+            }
+            else if(memberDTO.getUserPass().length() > 15) {
+                throw new CustomException(CustomErrorCode.SIGNPW_LONG_REQUEST);
+            }
+            else if(memberDTO.getUsername().length() > 10) {
+                throw new CustomException(CustomErrorCode.SIGNNAME_LONG_REQUEST);
+            }
+            else if(memberDTO.getUserId().length() < 6) {
+                throw new CustomException(CustomErrorCode.SIGNID_SHORT_REQUEST);
+            }
+            else if(memberDTO.getUserPass().length() < 6) {
+                throw new CustomException(CustomErrorCode.SIGNPW_SHORT_REQUEST);
+            }
+            else if(memberDTO.getUsername().length() < 2) {
+                throw new CustomException(CustomErrorCode.SIGNNAME_SHORT_REQUEST);
+            }
+            else {
+                Member newMember = Member.toMember(memberDTO);
+                memberRepository.save(newMember);
+                return HttpStatus.OK;
+            }
         }
     }
 
-    public void update(UpdateUserNameMemberDTO updateUserNameMemberDTO, String userid) {
+    public void updateByName(UpdateUserNameMemberDTO updateUserNameMemberDTO, String userid) {
         Member member = memberRepository.findByUserId(userid);
         member.setUsername(updateUserNameMemberDTO.getUsername());
         memberRepository.save(member); //update의 기능을 다함

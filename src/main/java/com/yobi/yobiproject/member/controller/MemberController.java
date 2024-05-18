@@ -32,7 +32,7 @@ public class MemberController {
     }
     @PatchMapping(value = "/user/{userId}")
     public ResponseEntity<?> updateUser(@PathVariable("userId") String userId, @RequestBody UpdateUserNameMemberDTO updateUserNameMemberDTO){
-        memberService.update(updateUserNameMemberDTO, userId);
+        memberService.updateByName(updateUserNameMemberDTO, userId);
         return ResponseEntity.noContent().build();
     }
 
