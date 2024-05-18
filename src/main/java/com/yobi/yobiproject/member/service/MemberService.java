@@ -19,7 +19,7 @@ import java.util.Date;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public HttpStatus save(MemberDTO memberDTO) {
+    public HttpStatus save(MemberDTO memberDTO) { // 회원가입
         Member member = memberRepository.findByUserId(memberDTO.getUserId());
         if(member != null) {
             throw new CustomException(CustomErrorCode.USER_ALREADY_EXISTS);
@@ -51,34 +51,51 @@ public class MemberService {
         }
     }
 
-    public void updateByName(UpdateUserNameMemberDTO updateUserNameMemberDTO, String userid) {
+    public HttpStatus updateByName(UpdateUserNameMemberDTO updateUserNameMemberDTO, String userid) { // 닉변
         Member member = memberRepository.findByUserId(userid);
-        member.setUsername(updateUserNameMemberDTO.getUsername());
-        memberRepository.save(member); //update의 기능을 다함
+        if(member == null) {
+            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
+        }
+        else {
+            if(updateUserNameMemberDTO.getUsername().length() < 2) {
+                throw new CustomException(CustomErrorCode.SIGNNAME_SHORT_REQUEST);
+            }
+            else if(updateUserNameMemberDTO.getUsername().length() > 10) {
+                throw new CustomException(CustomErrorCode.SIGNNAME_LONG_REQUEST);
+            }
+            else {
+                member.setUsername(updateUserNameMemberDTO.getUsername());
+                memberRepository.save(member); //update의 기능을 다함
+                return HttpStatus.OK;
+            }
+        }
     }
 
-    public ResponseMemberDTO getMemberById(String userid) {
+    public ResponseMemberDTO getMemberById(String userid) { // 닉네임 및 아이디 조회
         Member member = memberRepository.findByUserId(userid);
         return ResponseMemberDTO.toResponseMemberDTO(member);
     }
 
-    public boolean check(LoginMemberDTO loginMemberDTO) {
-        boolean result;
-        Member member = memberRepository.findByUserId(loginMemberDTO.getUserId());
+    public HttpStatus login(LoginMemberDTO loginMemberDTO) { // 로그인
+        Member member = memberRepository.findByUserIdAndUserPass(loginMemberDTO.getUserId(),
+                loginMemberDTO.getUserPass());
         if(member == null) {
-            return false;
-        }
-        if(loginMemberDTO.getUserPass().equals(member.getUserPass())) {
-            result = true;
+            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
         }
         else {
-            result = false;
+            return HttpStatus.OK;
         }
-        return result;
     }
 
-    public void delete(String userid) {
-        Member member = memberRepository.findByUserId(userid);
-        memberRepository.delete(member);
+    public HttpStatus delete(LoginMemberDTO loginMemberDTO) { // 회원탈퇴
+        Member member = memberRepository.findByUserIdAndUserPass(loginMemberDTO.getUserId(),
+                loginMemberDTO.getUserPass());
+        if(member == null) {
+            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
+        }
+        else {
+            memberRepository.delete(member);
+            return HttpStatus.OK;
+        }
     }
 }

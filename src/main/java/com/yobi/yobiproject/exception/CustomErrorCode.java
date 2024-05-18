@@ -18,7 +18,9 @@ public enum CustomErrorCode {
     SIGNNAME_LONG_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-007", "닉네임을 10글자 이내로 설정해주세요."),
     SIGNID_SHORT_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-008", "아이디를 6글자 이상 적어주세요."),
     SIGNPW_SHORT_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-009", "비밀번호를 6글자 이상 적어주세요."),
-    SIGNNAME_SHORT_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-010", "닉네임을 2글자 이상 적어주세요.");
+    SIGNNAME_SHORT_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-010", "닉네임을 2글자 이상 적어주세요."),
+    COMMENT_NOT_CONTENT(HttpStatus.BAD_REQUEST, "ACCOUNT-011", "댓글을 입력해주세요."),
+    COMMENT_LONG_REQUEST(HttpStatus.BAD_REQUEST, "ACCOUNT-012", "댓글이 100자를 초과하였습니다.");
 
     private final HttpStatus httpStatus;	// HttpStatus
     private final String code;				// ACCOUNT-001

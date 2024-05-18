@@ -22,37 +22,26 @@ public class MemberController {
     private final MemberRepository memberRepository;
 
     @PostMapping(value = "/user/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO){
+    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO){ // 회원가입
         return ResponseEntity.status(memberService.save(memberDTO)).build();
     }
     @GetMapping(value = "/user/{userId}")
-    public ResponseEntity<?> getUser(@PathVariable("userId") String userId){
+    public ResponseEntity<?> getUser(@PathVariable("userId") String userId){ // 사용자 아이디, 닉네임 조회
         ResponseMemberDTO member = memberService.getMemberById(userId);
         return ResponseEntity.ok().body(member);
     }
-    @PatchMapping(value = "/user/{userId}")
+    @PatchMapping(value = "/user/update/{userId}")  // 닉네임 변경
     public ResponseEntity<?> updateUser(@PathVariable("userId") String userId, @RequestBody UpdateUserNameMemberDTO updateUserNameMemberDTO){
-        memberService.updateByName(updateUserNameMemberDTO, userId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(memberService.updateByName(updateUserNameMemberDTO, userId)).build();
     }
 
     @PostMapping(value = "/user/login")
-    public boolean loginUser(@RequestBody LoginMemberDTO loginMemberDTO) {
-        if(loginMemberDTO.getUserId() == null || loginMemberDTO.getUserPass() == null) {
-            return false;
-        }
-        boolean result = memberService.check(loginMemberDTO);
-        if(result) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public ResponseEntity<?> loginUser(@RequestBody LoginMemberDTO loginMemberDTO) { // 로그인
+        return ResponseEntity.status(memberService.login(loginMemberDTO)).body("로그인 성공");
     }
 
-    @GetMapping(value = "/user/delete/{userId}")
-    public ResponseEntity<?> DeleteUser(@PathVariable("userId") String userId) { // 보안 검사 미구현
-        memberService.delete(userId);
-        return ResponseEntity.ok().build();
+    @PostMapping(value ="/user/delete")
+    public ResponseEntity<?> deleteUser(@RequestBody LoginMemberDTO loginMemberDTO) { // 회원탈퇴(DTO 재사용좀 할게요 ㅎ..)
+        return ResponseEntity.status(memberService.delete(loginMemberDTO)).body("회원탈퇴 성공");
     }
 }
