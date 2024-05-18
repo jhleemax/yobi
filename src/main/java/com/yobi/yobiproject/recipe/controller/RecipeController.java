@@ -24,8 +24,7 @@ public class RecipeController {
 
     @PostMapping(value = "/recipe/write") // 레시피 글쓰기
     public ResponseEntity<?> write(@RequestBody WriteRecipeDTO writeRecipeDTO) {
-        recipeService.save(writeRecipeDTO);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(recipeService.save(writeRecipeDTO)).build();
     }
 
     @PostMapping(value = "/recipe/list")

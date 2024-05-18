@@ -3,6 +3,7 @@ import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
 import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import com.yobi.yobiproject.exception.CustomErrorCode;
 import com.yobi.yobiproject.exception.CustomException;
+import com.yobi.yobiproject.member.Entity.MemberRepository;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.Entity.RecipeRepository;
 import com.yobi.yobiproject.recipe.dto.DeleteRecipeDTO;
@@ -21,9 +22,16 @@ import java.util.List;
 public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final DefRecipeService defRecipeService;
-    public void save(WriteRecipeDTO writeRecipeDTO) {
-        Recipe recipe = Recipe.toRecipe(writeRecipeDTO);
-        recipeRepository.save(recipe);
+    private final MemberRepository memberRepository;
+    public HttpStatus save(WriteRecipeDTO writeRecipeDTO) {
+        if(memberRepository.findByUserId(writeRecipeDTO.getUserId()) == null) {
+            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
+        }
+        else {
+            Recipe recipe = Recipe.toRecipe(writeRecipeDTO);
+            recipeRepository.save(recipe);
+            return HttpStatus.OK;
+        }
     }
 
     public HttpStatus Update(UpdateRecipeDTO updateRecipeDTO, int rcpNum) {

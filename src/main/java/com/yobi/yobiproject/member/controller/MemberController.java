@@ -36,7 +36,7 @@ public class MemberController {
     }
 
     @PostMapping(value = "/user/login")
-    public ResponseEntity<?> LoginUser(@RequestBody LoginMemberDTO loginMemberDTO) { // 로그인
+    public ResponseEntity<?> loginUser(@RequestBody LoginMemberDTO loginMemberDTO) { // 로그인
         return ResponseEntity.status(memberService.login(loginMemberDTO)).body("로그인 성공");
     }
 
