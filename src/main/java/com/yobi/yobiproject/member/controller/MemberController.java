@@ -23,8 +23,7 @@ public class MemberController {
 
     @PostMapping(value = "/user/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO){
-        memberService.save(memberDTO);
-        return ResponseEntity.created(URI.create("/user/" + memberDTO.getUserId())).build();
+        return ResponseEntity.status(memberService.save(memberDTO)).build();
     }
     @GetMapping(value = "/user/{userId}")
     public ResponseEntity<?> getUser(@PathVariable("userId") String userId){

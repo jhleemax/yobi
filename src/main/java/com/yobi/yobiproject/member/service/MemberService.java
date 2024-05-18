@@ -1,5 +1,7 @@
 package com.yobi.yobiproject.member.service;
 
+import com.yobi.yobiproject.exception.CustomErrorCode;
+import com.yobi.yobiproject.exception.CustomException;
 import com.yobi.yobiproject.member.Entity.Member;
 import com.yobi.yobiproject.member.Entity.MemberRepository;
 import com.yobi.yobiproject.member.dto.LoginMemberDTO;
@@ -7,6 +9,7 @@ import com.yobi.yobiproject.member.dto.MemberDTO;
 import com.yobi.yobiproject.member.dto.ResponseMemberDTO;
 import com.yobi.yobiproject.member.dto.UpdateUserNameMemberDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,9 +19,16 @@ import java.util.Date;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public void save(MemberDTO memberDTO) {
-        Member member = Member.toMember(memberDTO);
-        memberRepository.save(member); //save, update의 기능을 다함
+    public HttpStatus save(MemberDTO memberDTO) {
+        Member member = memberRepository.findByUserId(memberDTO.getUserId());
+        if(member != null) {
+            throw new CustomException(CustomErrorCode.USER_ALREADY_EXISTS);
+        }
+        else {
+            Member newMember = Member.toMember(memberDTO);
+            memberRepository.save(newMember);
+            return HttpStatus.OK;
+        }
     }
 
     public void update(UpdateUserNameMemberDTO updateUserNameMemberDTO, String userid) {
