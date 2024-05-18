@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends JpaRepository<Member, Long> {
     //select문 정의
     Member findByUserId(String userId);
+    Member findByUserIdAndUserPass(String userId, String userPass);
 }
