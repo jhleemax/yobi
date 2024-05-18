@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RcommentsService {
@@ -37,6 +39,15 @@ public class RcommentsService {
                     return HttpStatus.OK;
                 }
             }
+        }
+    }
+
+    public List<Rcomments> read(int rcpNum) {
+        if(recipeRepository.findByRecipeNum(rcpNum) == null) {
+            throw new CustomException(CustomErrorCode.RECIPE_NOT_FOUND);
+        }
+        else {
+            return rcommentsRepository.findByRecipeNum(rcpNum);
         }
     }
 }
