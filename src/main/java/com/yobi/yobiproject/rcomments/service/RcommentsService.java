@@ -5,7 +5,9 @@ import com.yobi.yobiproject.exception.CustomException;
 import com.yobi.yobiproject.member.Entity.MemberRepository;
 import com.yobi.yobiproject.rcomments.Entity.Rcomments;
 import com.yobi.yobiproject.rcomments.Entity.RcommentsRepository;
+import com.yobi.yobiproject.rcomments.dto.DeleteRcommentsDTO;
 import com.yobi.yobiproject.rcomments.dto.RcommentsDTO;
+import com.yobi.yobiproject.rcomments.dto.UpdateRcommentsDTO;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.Entity.RecipeRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,9 @@ public class RcommentsService {
                 if(rcommentsDTO.getRcommentContent().length() > 100) {
                     throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
                 }
+                else if(rcommentsDTO.getRcommentContent().isEmpty()) {
+                    throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+                }
                 else {
                     Rcomments rcomments = Rcomments.toRcomments(rcommentsDTO);
                     rcommentsRepository.save(rcomments);
@@ -48,6 +53,32 @@ public class RcommentsService {
         }
         else {
             return rcommentsRepository.findByRecipeNum(rcpNum);
+        }
+    }
+
+    public HttpStatus update(int rComNum, UpdateRcommentsDTO updateRcommentsDTO) {
+        if(updateRcommentsDTO.getRcommentContent().length() > 100) {
+            throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
+        }
+        else if(updateRcommentsDTO.getRcommentContent().isEmpty()) {
+            throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+        }
+        else {
+            Rcomments rcomments = rcommentsRepository.findByRcommentNum(rComNum);
+            rcomments.setRcommentContent(updateRcommentsDTO.getRcommentContent());
+            rcommentsRepository.save(rcomments);
+            return HttpStatus.OK;
+        }
+    }
+
+    public HttpStatus delete(int rComNum, DeleteRcommentsDTO deleteRcommentsDTO) {
+        Rcomments rcomments = rcommentsRepository.findByRcommentNum(rComNum);
+        if(rcomments.getUserId().equals(deleteRcommentsDTO.getUserId())) {
+            rcommentsRepository.delete(rcomments);
+            return HttpStatus.OK;
+        }
+        else {
+            throw new CustomException(CustomErrorCode.USER_NOT_IDEQUAL);
         }
     }
 }

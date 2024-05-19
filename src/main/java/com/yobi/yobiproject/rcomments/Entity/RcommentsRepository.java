@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface RcommentsRepository extends JpaRepository<Rcomments, Long> {
     List<Rcomments> findByRecipeNum(int rcpNum);
+    Rcomments findByRcommentNum(int rComNum);
 }
