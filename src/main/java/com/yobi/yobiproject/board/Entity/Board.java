@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class Board {
     @Column(name = "userid")
     private String userId;
 
+    @CreationTimestamp
     @Column(name = "board_date")
     private LocalDateTime boardDate;
 
