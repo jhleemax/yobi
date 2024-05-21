@@ -89,7 +89,7 @@ public class Activity_recipe extends AppCompatActivity {
                 String time = "60";
                 String difficulty = "1인분";
                 String ingredient = recipeOrder[i].getRcp_PARTS_DTLS();
-                Log.e("MYLOG:", (img + " " + title + " " + genre + " " + ingredient));
+                Log.e("MYLOG:", (img + " " + title + " " + genre + " " + amount + " " + time + " " + difficulty + " " + ingredient));
 
                 recipeDataSet.add(new Recipe(img, title, genre, ingredient));
             }

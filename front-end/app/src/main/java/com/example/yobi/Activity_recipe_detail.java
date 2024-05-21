@@ -8,15 +8,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.yobi.Retrofit.dto.RecipeInfoViewModel;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Activity_recipe_detail extends AppCompatActivity {
+import android.util.Log;
 
-    private RecipeInfoViewModel recipeInfoViewModel;
+import com.example.yobi.Retrofit.Repository;
+import com.example.yobi.Retrofit.dto.RecipeInfo;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class Activity_recipe_detail extends AppCompatActivity {
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,42 @@ public class Activity_recipe_detail extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        repository = new Repository();
+
+        // 특정 레시피 nm으로 가져오기
+        repository.getRecipeByNm("1", new Callback<RecipeInfo>() {
+                    @Override
+                    public void onResponse(Call<RecipeInfo> call, Response<RecipeInfo> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            RecipeInfo recipe = response.body();
+                            // 레시피 처리
+                            Log.d("Activity_recipe_detail", "Recipe: " + recipe.getRCP_NM());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RecipeInfo> call, Throwable throwable) {
+
+                    }
+                });
+
+        // 특정 레시피 seq로 가져오기
+        repository.getRecipeBySeq("28", new Callback<RecipeInfo>() {
+            @Override
+            public void onResponse(Call<RecipeInfo> call, Response<RecipeInfo> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    RecipeInfo recipe = response.body();
+                    // 레시피 처리
+                    Log.d("Activity_recipe_detail", "Recipe: " + recipe.getRCP_SEQ());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecipeInfo> call, Throwable t) {
+                Log.e("Activity_recipe_detail", "Error fetching recipe", t);
+            }
         });
     }
 }
