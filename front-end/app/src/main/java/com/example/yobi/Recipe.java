@@ -11,13 +11,13 @@ public class Recipe {
     String ingredient;
 
     public Recipe() {};
-    public Recipe(String thumbnail, String title, String genre, String amouunt, String time, String difficulty, String ingredient) {
+    public Recipe(String thumbnail, String title, String genre, String ingredient) {
         this.thumbnail = thumbnail;
         this.title = title;
         this.genre = genre;
-        this.amount = amouunt;
-        this.time = time;
-        this.difficulty = difficulty;
+//        this.amount = amouunt;
+//        this.time = time;
+//        this.difficulty = difficulty;
         this.ingredient = ingredient;
     }
     public String getTitle() {

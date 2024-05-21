@@ -61,7 +61,7 @@ public class Activity_recipe extends AppCompatActivity {
 
         context = this;
 
-        acButton_home = findViewById(R.id.appCompatButton_main_home);
+        acButton_home = findViewById(R.id.appCompatButton_recipe_home);
         acButton_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,11 +87,11 @@ public class Activity_recipe extends AppCompatActivity {
                 String genre = recipeOrder[i].getRcp_PAT2();
                 String amount = recipeOrder[i].getInfo_WGT();
                 String time = "60";
-                String difficulty = "1";
+                String difficulty = "1인분";
                 String ingredient = recipeOrder[i].getRcp_PARTS_DTLS();
-                Log.e("MYLOG:", (img + " " + title + " " + genre + " " + amount + " " + time + " " + difficulty + " " + ingredient));
+                Log.e("MYLOG:", (img + " " + title + " " + genre + " " + ingredient));
 
-                recipeDataSet.add(new Recipe(img, title, genre, amount, time, difficulty, ingredient));
+                recipeDataSet.add(new Recipe(img, title, genre, ingredient));
             }
 
             RecipeViewAdapter recipeViewAdapter = new RecipeViewAdapter(recipeDataSet);
