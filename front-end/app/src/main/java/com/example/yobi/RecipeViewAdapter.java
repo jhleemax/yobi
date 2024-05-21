@@ -1,10 +1,9 @@
+// RecipeViewAdapter.java
 package com.example.yobi;
 
-import android.app.Application;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -26,62 +23,55 @@ import java.util.ArrayList;
 public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.ViewHolder> {
 
     private ArrayList<Recipe> dataSet;
+    private OnItemClickListener listener;
+
+    // 아이템 클릭 리스너 인터페이스 정의
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    // 리스너 설정 메서드
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        protected ImageView recipe_thumbnail;
-        protected TextView
-                recipe_title,
-                recipe_genre,
-                recipe_amount,
-                recipe_time,
-                recipe_difficulty,
-                recipe_ingredient;
+        private final TextView recipe_title;
+        private final TextView recipe_genre;
+        private final TextView recipe_amount;
+        private final TextView recipe_time;
+        private final TextView recipe_difficulty;
+        private final TextView recipe_ingredient;
+        private final ImageView imageView;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            this.recipe_thumbnail = (ImageView) itemView.findViewById(R.id.imageView_recipe_itemlist);
-            this.recipe_title = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_01);
-            this.recipe_genre = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_02);
-            this.recipe_amount = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_03);
-            this.recipe_time = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_04);
-            this.recipe_difficulty = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_05);
-            this.recipe_ingredient = (TextView) itemView.findViewById(R.id.textView_recipe_itemlist_06);
+        @SuppressLint("WrongViewCast")
+        public ViewHolder(View view, OnItemClickListener listener) {
+            super(view);
+
+            // 뷰 초기화
+            recipe_title = view.findViewById(R.id.textView_recipe_itemlist_01);
+            recipe_genre = view.findViewById(R.id.textView_recipe_itemlist_02);
+            recipe_amount = view.findViewById(R.id.textView_recipe_itemlist_03);
+            recipe_time = view.findViewById(R.id.textView_recipe_itemlist_04);
+            recipe_difficulty = view.findViewById(R.id.textView_recipe_itemlist_05);
+            recipe_ingredient = view.findViewById(R.id.textView_recipe_itemlist_06);
+            imageView = view.findViewById(R.id.imageView_recipe_itemlist);
+
+            // itemView에 클릭 리스너 부착
+            view.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(v, position);
+                    }
+                }
+            });
         }
 
-        public ImageView getRecipe_thumbnail() {
-            return recipe_thumbnail;
-        }
-
-        public TextView getRecipe_title() {
-            return recipe_title;
-        }
-
-        public TextView getRecipe_genre() {
-            return recipe_genre;
-        }
-
-        public TextView getRecipe_amount() {
-            return recipe_amount;
-        }
-
-        public TextView getRecipe_time() {
-            return recipe_time;
-        }
-
-        public TextView getRecipe_difficulty() {
-            return recipe_difficulty;
-        }
-
-        public TextView getRecipe_ingredient() {
-            return recipe_ingredient;
-        }
-
-        void onBind(Recipe item) {
-            //recipe_thumbnail.setImageResource(item.getThumbnail());
-            //Glide.with(Activity_recipe.context).load(item.getThumbnail()).into(recipe_thumbnail);
+        public void onBind(Recipe item) {
             Thread th1 = new Thread(() -> {
-                Log.e("RecipeViewAdapter.onBind : ", item.getThumbnail());;
-                recipe_thumbnail.setImageBitmap(getBitmapFromURL(item.getThumbnail()));
+                Bitmap bitmap = getBitmapFromURL(item.getThumbnail());
+                imageView.post(() -> imageView.setImageBitmap(bitmap));
             });
 
             Thread th2 = new Thread(() -> {
@@ -113,10 +103,7 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
     @Override
     public RecipeViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_itemlist, parent, false);
-
-        RecipeViewAdapter.ViewHolder viewHolder = new RecipeViewAdapter.ViewHolder(view);
-
-        return viewHolder;
+        return new ViewHolder(view, listener);
     }
 
     @Override
@@ -131,18 +118,18 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
 
     public static Bitmap getBitmapFromURL(String src) {
         try {
-            Log.e("src",src);
+            Log.e("src", src);
             URL url = new URL(src);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap","returned");
+            Log.e("Bitmap", "returned");
             return myBitmap;
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("Exception",e.getMessage());
+            Log.e("Exception", e.getMessage());
             return null;
         }
     }

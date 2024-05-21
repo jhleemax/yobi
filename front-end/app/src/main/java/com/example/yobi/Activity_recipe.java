@@ -1,3 +1,4 @@
+// Activity_recipe.java
 package com.example.yobi;
 
 import android.content.Context;
@@ -81,7 +82,7 @@ public class Activity_recipe extends AppCompatActivity {
 
             RecipeOrder[] recipeOrder = jsonParseManager.getObject();
             ArrayList<Recipe> recipeDataSet = new ArrayList<>();
-            for(int i = 0; i < recipeOrder.length; i++) {
+            for (int i = 0; i < recipeOrder.length; i++) {
                 String img = recipeOrder[i].getAtt_FILE_NO_MAIN();
                 String title = recipeOrder[i].getRcpnm();
                 String genre = recipeOrder[i].getRcp_PAT2();
@@ -96,6 +97,17 @@ public class Activity_recipe extends AppCompatActivity {
 
             RecipeViewAdapter recipeViewAdapter = new RecipeViewAdapter(recipeDataSet);
             recyclerView.setAdapter(recipeViewAdapter);
+
+            // 아이템 클릭 리스너 설정
+            recipeViewAdapter.setOnItemClickListener((view, position) -> {
+                // 아이템 클릭 처리
+                Recipe clickedRecipe = recipeDataSet.get(position);
+                // 예를 들어, 클릭된 레시피 상세 정보 액티비티 시작
+                Intent intent = new Intent(Activity_recipe.this, Activity_recipe_detail.class);
+                intent.putExtra("RECIPE", clickedRecipe.getTitle());
+                startActivity(intent);
+            });
+
         });
 
         try {
@@ -108,5 +120,4 @@ public class Activity_recipe extends AppCompatActivity {
             throw new RuntimeException(e);
         }
     }
-
 }
