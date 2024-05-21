@@ -30,16 +30,21 @@ public class BcommentsService {
             throw new CustomException(CustomErrorCode.BOARD_NOT_FOUND);
         }
         else {
-            if(bcommentsDTO.getBcommentContent().length() > 100) {
-                throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
-            }
-            else if(bcommentsDTO.getBcommentContent().isEmpty()) {
-                throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+            if(memberRepository.findByUserId(bcommentsDTO.getUserId()) == null) {
+                throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
             }
             else {
-                Bcomments bcomments = Bcomments.toBcomments(bcommentsDTO);
-                bcommentsRepository.save(bcomments);
-                return HttpStatus.OK;
+                if(bcommentsDTO.getBcommentContent().length() > 100) {
+                    throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
+                }
+                else if(bcommentsDTO.getBcommentContent().isEmpty()) {
+                    throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+                }
+                else {
+                    Bcomments bcomments = Bcomments.toBcomments(bcommentsDTO);
+                    bcommentsRepository.save(bcomments);
+                    return HttpStatus.OK;
+                }
             }
         }
     }
