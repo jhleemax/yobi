@@ -8,11 +8,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.yobi.Retrofit.dto.RecipeInfoViewModel;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Activity_recipe_detail extends AppCompatActivity {
+
+    private RecipeInfoViewModel recipeInfoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

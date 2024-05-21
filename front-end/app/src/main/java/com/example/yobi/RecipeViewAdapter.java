@@ -52,9 +52,7 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
             return recipe_thumbnail;
         }
 
-        public TextView getRecipe_title() {
-            return recipe_title;
-        }
+        public TextView getRecipe_title() { return recipe_title; }
 
         public TextView getRecipe_genre() {
             return recipe_genre;
