@@ -7,41 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".Activity_main">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_recipe_01"
+        android:id="@+id/constraintLayout_main_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/white">
 
         <SearchView
-            android:id="@+id/searchView_recipe"
+            android:id="@+id/searchView_main"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/searchview_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/appCompatButton_recipe_bookmark"
+            app:layout_constraintEnd_toStartOf="@id/appCompatButton_main_bookmark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
             android:queryHint="레시피 검색"/>
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton_recipe_bookmark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="북마크"
-            app:layout_constraintEnd_toStartOf="@id/appCompatButton_recipe_alarm"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/appCompatButton_main_bookmark"
+            android:layout_width="24dp"
+            android:layout_height="32dp"
+            android:background="@drawable/main_button_bookmark"
+            app:layout_constraintEnd_toStartOf="@id/appCompatButton_main_alarm"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:layout_marginEnd="8dp"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton_recipe_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="알림"
+            android:id="@+id/appCompatButton_main_alarm"
+            android:layout_width="28dp"
+            android:layout_height="32dp"
+            android:background="@drawable/main_button_alarm"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:layout_marginEnd="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:id="@+id/scrollView_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout_recipe_01"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_main_01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout_recipe_02">
@@ -49,7 +64,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout_main_03"
                 android:layout_width="match_parent"
@@ -60,7 +76,23 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
                     android:text="이달의 레시피"/>
+
+                <TextView
+                    android:id="@+id/textView_main_monthly_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="더보기"
+                    android:textSize="14sp"
+                    android:textColor="@color/more"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView_main_monthly"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_main_monthly"
+                    android:layout_marginEnd="16dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_main_monthly"
@@ -68,15 +100,32 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/textView_main_monthly"/>
+                    app:layout_constraintTop_toBottomOf="@id/textView_main_monthly"
+                    android:layout_marginHorizontal="16dp"/>
 
                 <TextView
                     android:id="@+id/textView_main_dibs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="찜 순위 레시피"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView_main_monthly"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/textView_main_dibs_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="더보기"
+                    android:textSize="14sp"
+                    android:textColor="@color/more"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView_main_dibs"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_main_dibs"
+                    android:layout_marginEnd="16dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_main_dibs"
@@ -84,15 +133,32 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/textView_main_dibs"/>
+                    app:layout_constraintTop_toBottomOf="@id/textView_main_dibs"
+                    android:layout_marginHorizontal="16dp"/>
 
                 <TextView
                     android:id="@+id/textView_main_community"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티 인기 게시물"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView_main_dibs"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/textView_main_community_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="더보기"
+                    android:textSize="14sp"
+                    android:textColor="@color/more"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView_main_community"
+                    app:layout_constraintBottom_toBottomOf="@id/textView_main_community"
+                    android:layout_marginEnd="16dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_main_community"
@@ -100,15 +166,20 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/textView_main_community"/>
+                    app:layout_constraintTop_toBottomOf="@id/textView_main_community"
+                    android:layout_marginHorizontal="16dp"/>
 
                 <TextView
                     android:id="@+id/textView_main_easy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일상&amp;간편"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@id/recyclerView_main_community"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"/>
                 <LinearLayout
                     android:id="@+id/linearLayout_main_04"
                     android:layout_width="match_parent"
@@ -116,90 +187,123 @@
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/textView_main_easy"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_01"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp">
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_01"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_01"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView_main_easy_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="일상요리"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="일상요리"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_01"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_01"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_01"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_01"
+                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_01"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_01"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="0.8"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_02"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_02"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_02"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView_main_easy_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="간편식"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="간편식"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_02"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_02"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_02"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_02"
+                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_02"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_02"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="0.7"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_03"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="야식"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_03"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_03"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
+                            android:id="@+id/textView_main_easy_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="야식"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_03"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_03"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_03"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_03"
+                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_03"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_03"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_weight="0.5"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_04"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="에어프라이어"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_04"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_04"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_easy_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="에어프라이어"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_04"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_04"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_04"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_04"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -209,24 +313,34 @@
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/linearLayout_main_04"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginHorizontal="16dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_05"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp">
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_05"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_05"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/textView_main_easy_05"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="노오븐"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="노오븐"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_05"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_05"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_05"/>
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_05"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -235,20 +349,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_06"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_06"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_06"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/textView_main_easy_06"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="짭짤한"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="짭짤한"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_06"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_06"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_06"/>
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_06"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -257,20 +379,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_07"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="달달한"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_07"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_07"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_easy_07"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="달달한"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_07"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_07"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_07"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_07"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -278,21 +408,30 @@
                         android:layout_weight="1"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_easy_08"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="매운"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:id="@+id/imageView_main_easy_08"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_easy_08"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_easy_08"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="매운"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_easy_08"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_easy_08"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_easy_08"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_08"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <TextView
@@ -300,8 +439,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="건강&amp;함께"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@id/linearLayout_main_05"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"/>
                 <LinearLayout
                     android:id="@+id/linearLayout_main_06"
                     android:layout_width="match_parent"
@@ -309,24 +452,34 @@
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/textView_main_healthy"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginHorizontal="16dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_01"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp">
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_01"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_01"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/textView_main_healthy_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="건강요리"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="건강요리"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_01"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_01"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_01"/>
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_01"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -335,20 +488,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_02"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_02"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_02"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/textView_main_healthy_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="다이어트/헬스"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="다이어트/헬스"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_02"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_02"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_02"/>
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_02"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -357,20 +518,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_03"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="비건"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_03"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_03"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="비건"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_03"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_03"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_03"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_03"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -378,21 +547,30 @@
                         android:layout_weight="1"/>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_04"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="혼자"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp">
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_04"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_04"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="혼자"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_04"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_04"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_04"/>
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_04"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -402,24 +580,33 @@
                     android:orientation="horizontal"
                     app:layout_constraintTop_toBottomOf="@id/linearLayout_main_06"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginHorizontal="16dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_05"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="연인과함께"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_05"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_05"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_05"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="연인과함께"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_05"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_05"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_05"/>
+                            android:text="연인과 함께"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_05"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -428,20 +615,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_06"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="아이와함께"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_06"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_06"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_06"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="아이와함께"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_06"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_06"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_06"/>
+                            android:text="아이와 함께"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_06"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -450,20 +645,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_07"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="친구와함께"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_07"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_07"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_07"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="친구와함께"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_07"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_07"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_07"/>
+                            android:text="친구와 함께"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_07"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
                         android:layout_width="wrap_content"
@@ -472,20 +675,28 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/appCompatButton_main_healthy_08"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="부모님과함께"
+
+                        <ImageView
+                            android:id="@+id/imageView_main_healthy_08"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/main_imageview_oval"
+                            android:src="@drawable/main_imageview_healthy_08"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
                         <TextView
+                            android:id="@+id/textView_main_healthy_08"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="부모님과함께"
-                            app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_healthy_08"
-                            app:layout_constraintStart_toStartOf="@id/appCompatButton_main_healthy_08"
-                            app:layout_constraintEnd_toEndOf="@id/appCompatButton_main_healthy_08"/>
+                            android:text="부모님과 함께"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_08"
+                            android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
 
@@ -498,29 +709,35 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/menubar_background">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="16dp">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_main_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="홈"
+                    android:id="@+id/appCompatButton_recipe_home"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/main_button_home_active"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="홈"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_home"
+                    android:textColor="@color/main_theme"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -531,19 +748,21 @@
                 android:layout_weight="1"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_main_recipe"
+                    android:id="@+id/appCompatButton_recipe_recipe"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/main_button_recipe_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="레시피"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="레시피"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_recipe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -554,19 +773,21 @@
                 android:layout_weight="1"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_main_community"
+                    android:id="@+id/appCompatButton_recipe_community"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/main_button_community_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="커뮤니티"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_community"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_community"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -577,19 +798,22 @@
                 android:layout_weight="1"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_main_my"
+                    android:id="@+id/appCompatButton_recipe_my"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/main_button_my_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MY"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="MY"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_my"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_my"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>

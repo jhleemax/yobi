@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dp">
     <ImageView
         android:id="@+id/imageView_recipe_itemlist"
         android:layout_width="120dp"
@@ -16,12 +17,14 @@
         app:layout_constraintStart_toEndOf="@id/imageView_recipe_itemlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/textView_recipe_itemlist_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="소고기 된장찌개"/>
 
         <Space
@@ -49,7 +52,8 @@
                 android:background="@color/black"
                 app:layout_constraintStart_toEndOf="@id/textView_recipe_itemlist_02"
                 app:layout_constraintTop_toTopOf="@id/textView_recipe_itemlist_02"
-                app:layout_constraintBottom_toBottomOf="@id/textView_recipe_itemlist_02"/>
+                app:layout_constraintBottom_toBottomOf="@id/textView_recipe_itemlist_02"
+                android:layout_marginStart="4dp"/>
             <TextView
                 android:id="@+id/textView_recipe_itemlist_03"
                 android:layout_width="wrap_content"
@@ -57,7 +61,8 @@
                 android:text="2인분"
                 app:layout_constraintStart_toEndOf="@id/view_recipe_itemlist_01"
                 app:layout_constraintTop_toTopOf="@id/view_recipe_itemlist_01"
-                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_01"/>
+                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_01"
+                android:layout_marginStart="4dp"/>
             <View
                 android:id="@+id/view_recipe_itemlist_02"
                 android:layout_width="1dp"
@@ -65,7 +70,8 @@
                 android:background="@color/black"
                 app:layout_constraintStart_toEndOf="@id/textView_recipe_itemlist_03"
                 app:layout_constraintTop_toTopOf="@id/textView_recipe_itemlist_03"
-                app:layout_constraintBottom_toBottomOf="@id/textView_recipe_itemlist_03"/>
+                app:layout_constraintBottom_toBottomOf="@id/textView_recipe_itemlist_03"
+                android:layout_marginStart="4dp"/>
             <TextView
                 android:id="@+id/textView_recipe_itemlist_04"
                 android:layout_width="wrap_content"
@@ -73,7 +79,8 @@
                 android:text="15분 이내"
                 app:layout_constraintStart_toEndOf="@id/view_recipe_itemlist_02"
                 app:layout_constraintTop_toTopOf="@id/view_recipe_itemlist_02"
-                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"/>
+                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"
+                android:layout_marginStart="4dp"/>
             <View
                 android:id="@+id/view_recipe_itemlist_03"
                 android:layout_width="1dp"
@@ -81,7 +88,8 @@
                 android:background="@color/black"
                 app:layout_constraintStart_toEndOf="@id/textView_recipe_itemlist_04"
                 app:layout_constraintTop_toTopOf="@id/view_recipe_itemlist_02"
-                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"/>
+                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"
+                android:layout_marginStart="4dp"/>
             <TextView
                 android:id="@+id/textView_recipe_itemlist_05"
                 android:layout_width="wrap_content"
@@ -89,7 +97,8 @@
                 android:text="중급"
                 app:layout_constraintStart_toEndOf="@id/view_recipe_itemlist_03"
                 app:layout_constraintTop_toTopOf="@id/view_recipe_itemlist_02"
-                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"/>
+                app:layout_constraintBottom_toBottomOf="@id/view_recipe_itemlist_02"
+                android:layout_marginStart="4dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <Space
@@ -100,7 +109,8 @@
             android:id="@+id/textView_recipe_itemlist_06"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="소고기, 두부, 무, 양파, 된장, 쌈장 등" />
+            android:text="소고기, 두부, 무, 양파, 된장, 쌈장 등"
+            android:maxLines="1"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
