@@ -57,17 +57,22 @@ public class RcommentsService {
     }
 
     public HttpStatus update(int rComNum, UpdateRcommentsDTO updateRcommentsDTO) {
-        if(updateRcommentsDTO.getRcommentContent().length() > 100) {
-            throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
-        }
-        else if(updateRcommentsDTO.getRcommentContent().isEmpty()) {
-            throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+        if(memberRepository.findByUserId(updateRcommentsDTO.getUserId()) == null) {
+            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
         }
         else {
-            Rcomments rcomments = rcommentsRepository.findByRcommentNum(rComNum);
-            rcomments.setRcommentContent(updateRcommentsDTO.getRcommentContent());
-            rcommentsRepository.save(rcomments);
-            return HttpStatus.OK;
+            if(updateRcommentsDTO.getRcommentContent().length() > 100) {
+                throw new CustomException(CustomErrorCode.COMMENT_LONG_REQUEST);
+            }
+            else if(updateRcommentsDTO.getRcommentContent().isEmpty()) {
+                throw new CustomException(CustomErrorCode.COMMENT_NOT_CONTENT);
+            }
+            else {
+                Rcomments rcomments = rcommentsRepository.findByRcommentNum(rComNum);
+                rcomments.setRcommentContent(updateRcommentsDTO.getRcommentContent());
+                rcommentsRepository.save(rcomments);
+                return HttpStatus.OK;
+            }
         }
     }
 
