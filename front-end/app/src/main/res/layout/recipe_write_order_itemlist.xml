@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/textView_recipe_write_order_itemlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STEP1"
+        android:textColor="@color/main_theme"
+        android:background="@drawable/textview_step_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:padding="1dp"/>
+
+    <EditText
+        android:id="@+id/editText_recipe_write_order_itemlist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="1번째 순서를 작성해주세요."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_recipe_write_order_itemlist"
+        android:background="@null"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintTop_toBottomOf="@id/editText_recipe_write_order_itemlist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"/>
+
+    <ImageView
+        android:id="@+id/imageView_recipe_write_order_itemlist_substract"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/button_substract_background"
+        android:src="@drawable/button_substract"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

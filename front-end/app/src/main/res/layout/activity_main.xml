@@ -170,7 +170,7 @@
                     android:layout_marginHorizontal="16dp"/>
 
                 <TextView
-                    android:id="@+id/textView_main_easy"
+                    android:id="@+id/textView_category_easy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="일상&amp;간편"
@@ -181,11 +181,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"/>
                 <LinearLayout
-                    android:id="@+id/linearLayout_main_04"
+                    android:id="@+id/linearLayout_category_04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/textView_main_easy"
+                    app:layout_constraintTop_toBottomOf="@id/textView_category_easy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginHorizontal="16dp"
@@ -197,7 +197,7 @@
                         android:layout_marginStart="8dp">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_01"
+                            android:id="@+id/imageView_category_easy_01"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -206,15 +206,15 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView_main_easy_01"
+                            android:id="@+id/textView_category_easy_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="일상요리"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_01"
-                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_01"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_01"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_category_easy_01"
+                            app:layout_constraintStart_toStartOf="@id/imageView_category_easy_01"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_01"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -226,7 +226,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_02"
+                            android:id="@+id/imageView_category_easy_02"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -235,15 +235,15 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView_main_easy_02"
+                            android:id="@+id/textView_category_easy_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="간편식"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_02"
-                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_02"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_02"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_category_easy_02"
+                            app:layout_constraintStart_toStartOf="@id/imageView_category_easy_02"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_02"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -255,7 +255,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_03"
+                            android:id="@+id/imageView_category_easy_03"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -264,15 +264,15 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView_main_easy_03"
+                            android:id="@+id/textView_category_easy_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="야식"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@id/imageView_main_easy_03"
-                            app:layout_constraintStart_toStartOf="@id/imageView_main_easy_03"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_03"
+                            app:layout_constraintEnd_toEndOf="@id/imageView_category_easy_03"
+                            app:layout_constraintStart_toStartOf="@id/imageView_category_easy_03"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_03"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -284,7 +284,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_04"
+                            android:id="@+id/imageView_category_easy_04"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -294,7 +294,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_easy_04"
+                            android:id="@+id/textView_category_easy_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="에어프라이어"
@@ -302,16 +302,16 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_04"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_04"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/linearLayout_main_05"
+                    android:id="@+id/linearLayout_category_05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayout_main_04"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_category_04"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginHorizontal="16dp">
@@ -321,7 +321,7 @@
                         android:layout_marginStart="8dp">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_05"
+                            android:id="@+id/imageView_category_easy_05"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -331,7 +331,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_easy_05"
+                            android:id="@+id/textView_category_easy_05"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="노오븐"
@@ -339,7 +339,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_05"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_05"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -351,7 +351,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_06"
+                            android:id="@+id/imageView_category_easy_06"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -361,7 +361,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_easy_06"
+                            android:id="@+id/textView_category_easy_06"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="짭짤한"
@@ -369,7 +369,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_06"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_06"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -381,7 +381,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_07"
+                            android:id="@+id/imageView_category_easy_07"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -391,7 +391,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_easy_07"
+                            android:id="@+id/textView_category_easy_07"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="달달한"
@@ -399,7 +399,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_07"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_07"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -412,7 +412,7 @@
                         android:layout_marginEnd="8dp">
 
                         <ImageView
-                            android:id="@+id/imageView_main_easy_08"
+                            android:id="@+id/imageView_category_easy_08"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -422,7 +422,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_easy_08"
+                            android:id="@+id/textView_category_easy_08"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="매운"
@@ -430,27 +430,27 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_easy_08"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_easy_08"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/textView_main_healthy"
+                    android:id="@+id/textView_category_healthy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="건강&amp;함께"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayout_main_05"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_category_05"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"/>
                 <LinearLayout
-                    android:id="@+id/linearLayout_main_06"
+                    android:id="@+id/linearLayout_category_06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/textView_main_healthy"
+                    app:layout_constraintTop_toBottomOf="@id/textView_category_healthy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginHorizontal="16dp">
@@ -460,7 +460,7 @@
                         android:layout_marginStart="8dp">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_01"
+                            android:id="@+id/imageView_category_healthy_01"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -470,7 +470,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_01"
+                            android:id="@+id/textView_category_healthy_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="건강요리"
@@ -478,7 +478,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_01"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_01"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -490,7 +490,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_02"
+                            android:id="@+id/imageView_category_healthy_02"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -500,7 +500,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_02"
+                            android:id="@+id/textView_category_healthy_02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="다이어트/헬스"
@@ -508,7 +508,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_02"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_02"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -520,7 +520,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_03"
+                            android:id="@+id/imageView_category_healthy_03"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -530,7 +530,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_03"
+                            android:id="@+id/textView_category_healthy_03"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="비건"
@@ -538,7 +538,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_03"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_03"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -551,7 +551,7 @@
                         android:layout_marginEnd="8dp">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_04"
+                            android:id="@+id/imageView_category_healthy_04"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -561,7 +561,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_04"
+                            android:id="@+id/textView_category_healthy_04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="혼자"
@@ -569,16 +569,16 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_04"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_04"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/linearLayout_main_07"
+                    android:id="@+id/linearLayout_category_07"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayout_main_06"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_category_06"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginHorizontal="16dp">
@@ -587,7 +587,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_05"
+                            android:id="@+id/imageView_category_healthy_05"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -597,7 +597,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_05"
+                            android:id="@+id/textView_main_category_05"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="연인과 함께"
@@ -605,7 +605,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_05"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_05"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -617,7 +617,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_06"
+                            android:id="@+id/imageView_main_category_06"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -627,7 +627,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_06"
+                            android:id="@+id/textView_main_category_06"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="아이와 함께"
@@ -635,7 +635,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_06"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_category_06"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -647,7 +647,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_07"
+                            android:id="@+id/imageView_main_category_07"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -657,7 +657,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_07"
+                            android:id="@+id/textView_category_healthy_07"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="친구와 함께"
@@ -665,7 +665,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_07"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_main_category_07"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <Space
@@ -677,7 +677,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:id="@+id/imageView_main_healthy_08"
+                            android:id="@+id/imageView_category_healthy_08"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:background="@drawable/main_imageview_oval"
@@ -687,7 +687,7 @@
                             app:layout_constraintEnd_toEndOf="parent"/>
 
                         <TextView
-                            android:id="@+id/textView_main_healthy_08"
+                            android:id="@+id/textView_category_healthy_08"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="부모님과 함께"
@@ -695,7 +695,7 @@
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/imageView_main_healthy_08"
+                            app:layout_constraintTop_toBottomOf="@id/imageView_category_healthy_08"
                             android:layout_marginTop="4dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>

@@ -13,6 +13,7 @@ jacksonDatabind = "2.17.1"
 glide = "5.0.0-rc01"
 picasso = "2.71828"
 retrofit = "2.11.0"
+circleimageview = "3.1.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -28,6 +29,7 @@ jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-datab
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

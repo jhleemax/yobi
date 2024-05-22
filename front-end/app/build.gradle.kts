@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.jackson.databind)
     implementation(libs.glide)
     implementation(libs.picasso)
+    implementation(libs.circleimageview)
     annotationProcessor(libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
