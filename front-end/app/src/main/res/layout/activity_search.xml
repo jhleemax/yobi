@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_search">
+    tools:context=".Activity_search"
+    android:background="@color/white">
     <LinearLayout
         android:id="@+id/linearLayout_search_01"
         android:layout_width="match_parent"
@@ -13,80 +14,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="backspace"/>
-        <EditText
+            android:id="@+id/appCompatButton_search_backspace"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_backspace"/>
+
+        <SearchView
+            android:id="@+id/searchView_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="레시피 검색"
-            android:layout_weight="1"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search"/>
+            android:layout_weight="1"
+            android:background="@drawable/searchview_background"
+            android:layout_marginStart="16dp"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/textView_serach_01"
+        android:id="@+id/textView_search_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="최근 검색어"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout_search_01"/>
-    <LinearLayout
-        android:id="@+id/linearLayout_search_02"
-        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_search_01"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"/>
+    <HorizontalScrollView
+        android:id="@+id/scrollView_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textView_serach_01"
         app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal"
-        android:layout_marginStart="5dp">
-        <LinearLayout
-            android:id="@+id/linearLayout_search_sub_01"
-            android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textView_search_01"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_search_recent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginEnd="15dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="왕족발"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/linearLayout_search_sub_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="장충동"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="X"/>
-        </LinearLayout>
-    </LinearLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </HorizontalScrollView>
     <TextView
         android:id="@+id/textView_search_02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="인기 검색어"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout_search_02"/>
+        app:layout_constraintTop_toBottomOf="@id/scrollView_search"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00월 00일 00시 기준"
+        android:textColor="@color/more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textView_search_02"
-        app:layout_constraintBottom_toBottomOf="@id/textView_search_02"/>
+        app:layout_constraintBottom_toBottomOf="@id/textView_search_02"
+        android:layout_marginEnd="16dp"/>
     
     <GridLayout
         android:layout_width="match_parent"
@@ -95,18 +89,22 @@
         android:columnCount="2"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/textView_search_02"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingHorizontal="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_01_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="1"/>
             <TextView
                 android:id="@+id/textView_search_hot_01_02"
@@ -114,11 +112,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_01_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_01_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -126,23 +124,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_02_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="2"/>
             <TextView
                 android:id="@+id/textView_search_hot_02_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_02_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_02_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -150,23 +151,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_03_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="3"/>
             <TextView
                 android:id="@+id/textView_search_hot_03_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_03_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_03_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -174,23 +178,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_04_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="4"/>
             <TextView
                 android:id="@+id/textView_search_hot_04_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_04_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_04_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -198,23 +205,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_05_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="5"/>
             <TextView
                 android:id="@+id/textView_search_hot_05_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_05_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_05_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -222,23 +232,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_06_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="6"/>
             <TextView
                 android:id="@+id/textView_search_hot_06_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_06_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_06_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -246,23 +259,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_07_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="7"/>
             <TextView
                 android:id="@+id/textView_search_hot_07_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_07_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_07_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -270,23 +286,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_08_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="8"/>
             <TextView
                 android:id="@+id/textView_search_hot_08_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_08_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_08_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -294,23 +313,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_09_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="9"/>
             <TextView
                 android:id="@+id/textView_search_hot_09_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_09_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_09_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
@@ -318,23 +340,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:layout_rowWeight="1"
+            android:gravity="center_vertical">
             <TextView
                 android:id="@+id/textView_search_hot_10_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"/>
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="10"/>
             <TextView
                 android:id="@+id/textView_search_hot_10_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="충격의 김치 볶음밥"/>
-            <TextView
-                android:id="@+id/textView_search_hot_10_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▲"
+            <ImageView
+                android:id="@+id/imageView_search_hot_10_03"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/arrow_up_src"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
     </GridLayout>
