@@ -8,7 +8,7 @@
     tools:context=".Activity_login_normal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_login_normal_01"
+        android:id="@+id/constraintLayout_recipe_detail_order_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/constraintLayout_login_normal_02"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout_login_normal_01"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_recipe_detail_order_01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout_login_normal_03"
         android:background="@color/white">

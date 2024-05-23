@@ -13,20 +13,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="backspace"/>
-        <EditText
+            android:id="@+id/appCompatButton_search_result_backspace"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_backspace"/>
+
+        <SearchView
+            android:id="@+id/searchView_search_result"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:hint="레시피 검색"
-            android:layout_weight="1"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search"/>
+            android:layout_weight="1"
+            android:background="@drawable/searchview_background"
+            android:layout_marginStart="16dp"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout_search_result_02"
@@ -34,62 +39,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/linearLayout_search_result_01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="16dp"
+        android:background="@color/white">
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="filter"/>
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/filter_src"/>
         <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_gravity="center">
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:scrollbars="none"
+            android:layout_marginHorizontal="16dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_search_result_filter"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:id="@+id/linearLayout_search_result_filter_01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="15dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="쉬움"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="X"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/linearLayout_search_result_filter_02"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="15dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2인분"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="X"/>
-                </LinearLayout>
-            </LinearLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
         </HorizontalScrollView>
-        <TextView
-            android:id="@+id/textView_search_result_01"
+        <Spinner
+            android:id="@+id/spinner_search_result_filter"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="▼"/>
-        <TextView
-            android:id="@+id/textView_search_result_02"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="정확도순"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -97,12 +71,15 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayout_search_result_02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white">
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_search_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"/>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
