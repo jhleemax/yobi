@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity_main">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_main_01"
+        android:id="@+id/constraintLayout_community_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,13 +16,13 @@
         android:background="@color/white">
 
         <SearchView
-            android:id="@+id/searchView_main"
+            android:id="@+id/searchView_community"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/searchview_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/appCompatButton_main_bookmark"
+            app:layout_constraintEnd_toStartOf="@id/appCompatButton_community_bookmark"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -31,17 +31,17 @@
             android:queryHint="레시피 검색"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton_main_bookmark"
+            android:id="@+id/appCompatButton_community_bookmark"
             android:layout_width="24dp"
             android:layout_height="32dp"
             android:background="@drawable/main_button_bookmark"
-            app:layout_constraintEnd_toStartOf="@id/appCompatButton_main_alarm"
+            app:layout_constraintEnd_toStartOf="@id/appCompatButton_community_alarm"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:gravity="center"
             android:layout_marginEnd="8dp"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton_main_alarm"
+            android:id="@+id/appCompatButton_community_alarm"
             android:layout_width="28dp"
             android:layout_height="32dp"
             android:background="@drawable/main_button_alarm"
@@ -56,10 +56,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout_main_01"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout_community_01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/constraintLayout_recipe_02">
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout_main_02">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -704,7 +704,7 @@
         </LinearLayout>
     </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_recipe_02"
+        android:id="@+id/constraintLayout_main_02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -725,7 +725,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_home"
+                    android:id="@+id/appCompatButton_main_home"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/main_button_home_active"
@@ -737,7 +737,7 @@
                     android:layout_height="wrap_content"
                     android:text="홈"
                     android:textColor="@color/main_theme"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_home"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -751,7 +751,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_recipe"
+                    android:id="@+id/appCompatButton_main_recipe"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/main_button_recipe_normal"
@@ -762,7 +762,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="레시피"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_recipe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -776,7 +776,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_community"
+                    android:id="@+id/appCompatButton_main_community"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/main_button_community_normal"
@@ -787,7 +787,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="커뮤니티"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_community"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_community"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>
@@ -802,7 +802,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp">
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_recipe_my"
+                    android:id="@+id/appCompatButton_main_my"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/main_button_my_normal"
@@ -813,7 +813,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MY"
-                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_recipe_my"
+                    app:layout_constraintTop_toBottomOf="@id/appCompatButton_main_my"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:textAlignment="center"/>

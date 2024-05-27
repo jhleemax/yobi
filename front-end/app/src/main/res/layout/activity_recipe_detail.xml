@@ -111,7 +111,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/recipe_wasteTime_src" />
+                        android:background="@drawable/recipe_wastetime_src" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -258,7 +258,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout_recipe_detail_03"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,7 +270,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="16dp"/>
+                    />
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_recipe_detail_start"
                     android:layout_width="wrap_content"
@@ -280,7 +281,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginVertical="8dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.recyclerview.widget.RecyclerView
