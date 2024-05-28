@@ -1,6 +1,7 @@
 package com.yobi.yobiproject.defRecipe.controller;
 
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
+import com.yobi.yobiproject.defRecipe.dto.SearchDefRecipeDTO;
 import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,14 @@ public class DefRecipeController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/api/list")
+    @GetMapping(value = "/api/list")
     public ResponseEntity<?> list() {
         List<DefRecipe> Send_Data = defRecipeService.SendDefrecipe();
         return ResponseEntity.ok().body(Send_Data);
     }
-    @GetMapping(value = "/api/search/{RCP_NM}")
-    public ResponseEntity<?> search(@PathVariable("RCP_NM") String rcp_NM) {
-        List<DefRecipe> Search_Data = defRecipeService.SearchDefrecipe(rcp_NM);
+    @GetMapping(value = "/api/search")
+    public ResponseEntity<?> search(@RequestBody SearchDefRecipeDTO searchDefRecipeDTO) {
+        List<DefRecipe> Search_Data = defRecipeService.SearchDefrecipe(searchDefRecipeDTO);
         return ResponseEntity.ok().body(Search_Data);
     }
 

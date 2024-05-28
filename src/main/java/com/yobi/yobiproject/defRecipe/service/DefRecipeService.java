@@ -2,6 +2,7 @@ package com.yobi.yobiproject.defRecipe.service;
 
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipeRepository;
+import com.yobi.yobiproject.defRecipe.dto.SearchDefRecipeDTO;
 import com.yobi.yobiproject.member.Entity.Member;
 import com.yobi.yobiproject.member.dto.ResponseMemberDTO;
 import lombok.RequiredArgsConstructor;
@@ -32,8 +33,8 @@ public class DefRecipeService {
         return readRecipe;
     }
 
-    public List<DefRecipe> SearchDefrecipe(String rcpNM) {
-        List<DefRecipe> searchRecipe = defRecipeRepository.findAllByRCPNMContaining(rcpNM);
+    public List<DefRecipe> SearchDefrecipe(SearchDefRecipeDTO searchDefRecipeDTO) {
+        List<DefRecipe> searchRecipe = defRecipeRepository.findAllByRCPNMContaining(searchDefRecipeDTO.getRCPNM());
         return searchRecipe;
     }
     public void fetchDataAndPrint() {

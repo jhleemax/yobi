@@ -1,5 +1,9 @@
 package com.yobi.yobiproject.recipe.service;
+import com.yobi.yobiproject.bookmark.Entity.Bookmark;
+import com.yobi.yobiproject.bookmark.Entity.BookmarkRepository;
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
+import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipeRepository;
+import com.yobi.yobiproject.defRecipe.dto.SearchDefRecipeDTO;
 import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import com.yobi.yobiproject.exception.CustomErrorCode;
 import com.yobi.yobiproject.exception.CustomException;
@@ -7,6 +11,7 @@ import com.yobi.yobiproject.member.Entity.MemberRepository;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.Entity.RecipeRepository;
 import com.yobi.yobiproject.recipe.dto.DeleteRecipeDTO;
+import com.yobi.yobiproject.recipe.dto.SearchRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +28,8 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final DefRecipeService defRecipeService;
     private final MemberRepository memberRepository;
+    private final DefRecipeRepository defRecipeRepository;
+    private final BookmarkRepository bookmarkRepository;
     public HttpStatus save(WriteRecipeDTO writeRecipeDTO) {
         if(memberRepository.findByUserId(writeRecipeDTO.getUserId()) == null) {
             throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
@@ -159,10 +166,10 @@ public class RecipeService {
         }
     }
 
-    public List<Object> SearchRecipe(String foodName) { // 레시피 통합 조회
+    public List<Object> SearchRecipe(SearchRecipeDTO searchRecipeDTO) { // 레시피 통합 조회
         List<Object> searchData = new ArrayList<>();
-        List<DefRecipe> ApiData = defRecipeService.SearchDefrecipe(foodName);
-        List<Recipe> RecipeData = recipeRepository.findAllByFoodNameContaining(foodName);
+        List<DefRecipe> ApiData = defRecipeRepository.findAllByRCPNMContaining(searchRecipeDTO.getRCPNM());
+        List<Recipe> RecipeData = recipeRepository.findAllByFoodNameContaining(searchRecipeDTO.getFoodName());
         searchData.addAll(ApiData);
         searchData.addAll(RecipeData);
         if(searchData.isEmpty()) {
@@ -172,5 +179,7 @@ public class RecipeService {
             return searchData;
         }
     }
+
+
 
 }

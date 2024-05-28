@@ -1,11 +1,13 @@
 package com.yobi.yobiproject.recipe.controller;
 
 import com.yobi.yobiproject.defRecipe.Entitiy.DefRecipe;
+import com.yobi.yobiproject.defRecipe.dto.SearchDefRecipeDTO;
 import com.yobi.yobiproject.defRecipe.service.DefRecipeService;
 import com.yobi.yobiproject.exception.CustomErrorCode;
 import com.yobi.yobiproject.exception.CustomException;
 import com.yobi.yobiproject.recipe.Entity.Recipe;
 import com.yobi.yobiproject.recipe.dto.DeleteRecipeDTO;
+import com.yobi.yobiproject.recipe.dto.SearchRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.UpdateRecipeDTO;
 import com.yobi.yobiproject.recipe.dto.WriteRecipeDTO;
 import com.yobi.yobiproject.recipe.service.RecipeService;
@@ -61,9 +63,9 @@ public class RecipeController {
         return ResponseEntity.status(recipeService.Update(updateRecipeDTO,rcpNum)).build();
     }
 
-    @GetMapping(value = "/recipe/search/{foodName}")
-    public ResponseEntity<?> search(@PathVariable("foodName") String foodName) { // 레시피 통합조회
-        return ResponseEntity.ok().body(recipeService.SearchRecipe(foodName));
+    @GetMapping(value = "/recipe/search")
+    public ResponseEntity<?> search(@RequestBody SearchRecipeDTO searchRecipeDTO) { // 레시피 통합조회
+        return ResponseEntity.ok().body(recipeService.SearchRecipe(searchRecipeDTO));
     }
 
     @GetMapping(value = "/recipe/user/{userid}")
