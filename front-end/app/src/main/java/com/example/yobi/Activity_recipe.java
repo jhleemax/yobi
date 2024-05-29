@@ -49,7 +49,7 @@ public class Activity_recipe extends AppCompatActivity {
 
         context = this;
 
-        acButton_home = findViewById(R.id.appCompatButton_community_home);
+        acButton_home = findViewById(R.id.appCompatButton_recipe_home);
         acButton_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

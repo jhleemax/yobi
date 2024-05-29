@@ -24,7 +24,7 @@ public class Activity_main extends AppCompatActivity {
             return insets;
         });
 
-        acButton_recipe = findViewById(R.id.appCompatButton_community_recipe);
+        acButton_recipe = findViewById(R.id.appCompatButton_main_recipe);
         acButton_recipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
