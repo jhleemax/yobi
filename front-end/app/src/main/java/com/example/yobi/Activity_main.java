@@ -12,7 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Activity_main extends AppCompatActivity {
-    Button acButton_recipe;
+    Button acButton_recipe, acButton_community;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +32,15 @@ public class Activity_main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        acButton_community = findViewById(R.id.appCompatButton_main_community);
+        acButton_community.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_main.this, Activity_community.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

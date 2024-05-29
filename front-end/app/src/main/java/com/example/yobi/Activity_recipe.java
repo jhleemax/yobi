@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class Activity_recipe extends AppCompatActivity {
     String jsonString;
 
     Button acButton_home;
+    TextView textView_recipe_01;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,18 @@ public class Activity_recipe extends AppCompatActivity {
             return insets;
         });
 
+        textView_recipe_01 = findViewById(R.id.textView_recipe_01);
+        textView_recipe_01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_recipe.this, Activity_category.class);
+                startActivity(intent);
+            }
+        });
+
         httpConncectionManager = new HttpConnectionManager(
-                "http://ec2-13-125-237-115.ap-northeast-2.compute.amazonaws.com:8081/api/defrecipe",
-                "POST"
+                "http://ec2-13-125-237-115.ap-northeast-2.compute.amazonaws.com:8081/api/list",
+                "GET"
         );
 
         Thread getResponseThread = new Thread(() -> {
