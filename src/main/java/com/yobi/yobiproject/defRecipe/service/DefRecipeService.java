@@ -34,8 +34,8 @@ public class DefRecipeService {
     }
 
     public List<DefRecipe> SearchDefrecipe(SearchDefRecipeDTO searchDefRecipeDTO) {
-        List<DefRecipe> searchRecipe = defRecipeRepository.findAllByRCPNMContaining(searchDefRecipeDTO.getRCPNM());
-        return searchRecipe;
+        System.out.println(searchDefRecipeDTO.getRCPNM());
+        return defRecipeRepository.findAllByRCPNMContaining(searchDefRecipeDTO.getRCPNM());
     }
     public void fetchDataAndPrint() {
         try {

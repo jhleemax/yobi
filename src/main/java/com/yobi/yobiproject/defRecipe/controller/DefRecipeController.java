@@ -21,12 +21,12 @@ public class DefRecipeController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/api/list")
+    @PostMapping(value = "/api/list")
     public ResponseEntity<?> list() {
         List<DefRecipe> Send_Data = defRecipeService.SendDefrecipe();
         return ResponseEntity.ok().body(Send_Data);
     }
-    @GetMapping(value = "/api/search")
+    @PostMapping(value = "/api/search")
     public ResponseEntity<?> search(@RequestBody SearchDefRecipeDTO searchDefRecipeDTO) {
         List<DefRecipe> Search_Data = defRecipeService.SearchDefrecipe(searchDefRecipeDTO);
         return ResponseEntity.ok().body(Search_Data);
