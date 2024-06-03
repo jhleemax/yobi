@@ -2,16 +2,17 @@ package com.example.yobi;
 
 public class Recipe {
     String thumbnail;
-    String
-        title;
+    String title;
     String genre;
     String amount;
     String time;
     String difficulty;
     String ingredient;
 
+    String seq;
+
     public Recipe() {};
-    public Recipe(String thumbnail, String title, String genre, String ingredient) {
+    public Recipe(String thumbnail, String title, String genre, String ingredient, String seq) {
         this.thumbnail = thumbnail;
         this.title = title;
         this.genre = genre;
@@ -19,6 +20,7 @@ public class Recipe {
 //        this.time = time;
 //        this.difficulty = difficulty;
         this.ingredient = ingredient;
+        this.seq = seq;
     }
     public String getTitle() {
         return title;
@@ -75,4 +77,8 @@ public class Recipe {
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getSeq() { return seq; }
+
+    public void setSeq(String seq) { this.seq = seq; }
 }

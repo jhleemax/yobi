@@ -4,6 +4,7 @@ import android.util.Log;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class JSONParseManager {
@@ -12,7 +13,7 @@ public class JSONParseManager {
     RecipeOrder[] StringToObject;
 
     JSONParseManager(String json) { jsonString = json; };
-    void splitJSON() {
+    void splitJSONtoRecipeOrder() {
         if(jsonString == null) {
             Log.e("jsonparserMessage", "파싱할 json null");
             return;
@@ -38,13 +39,13 @@ public class JSONParseManager {
         return splitedJSONString;
     }
 
-    RecipeOrder[] getObject() {
-        Log.e("JSONParserManager.getObject()", "start");
+    RecipeOrder[] getObjectbyRecipeOrder() {
+        Log.e("JSONParserManager.getObjectbyRecipeOrder()", "start");
         ObjectMapper mapper = new ObjectMapper();
         RecipeOrder[] StringToObject = new RecipeOrder[splitedJSONString.length];
 
         try {
-            Log.e("JSONParserManager.getObject()", "정상");
+            Log.e("JSONParserManager.getObjectbyRecipeOrder()", "정상");
             int i = 0;
             for(String s : splitedJSONString) {
 //                System.out.println(s);
@@ -59,7 +60,7 @@ public class JSONParseManager {
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            Log.e("JSONParserManager.getObject()", "에러");
+            Log.e("JSONParserManager.getObjectbyRecipeOrder()", "에러");
         }
 
         return StringToObject;

@@ -23,7 +23,7 @@ public class Activity_recipe extends AppCompatActivity {
 
     public static Context context;
 
-    HttpConnectionManager httpConncectionManager;
+    HttpConnectionManager httpConnectionManager;
     String jsonString;
 
     Button acButton_home;
@@ -49,13 +49,13 @@ public class Activity_recipe extends AppCompatActivity {
             }
         });
 
-        httpConncectionManager = new HttpConnectionManager(
+        httpConnectionManager = new HttpConnectionManager(
                 "http://ec2-13-125-237-115.ap-northeast-2.compute.amazonaws.com:8081/api/list",
                 "GET"
         );
 
         Thread getResponseThread = new Thread(() -> {
-            jsonString = httpConncectionManager.getResponse();
+            jsonString = httpConnectionManager.getResponse();
         });
 
         context = this;
@@ -76,11 +76,12 @@ public class Activity_recipe extends AppCompatActivity {
 
         Thread jsonParsingThread = new Thread(() -> {
             JSONParseManager jsonParseManager = new JSONParseManager(jsonString);
-            jsonParseManager.splitJSON();
+            jsonParseManager.splitJSONtoRecipeOrder();
 
-            RecipeOrder[] recipeOrder = jsonParseManager.getObject();
+            RecipeOrder[] recipeOrder = jsonParseManager.getObjectbyRecipeOrder();
             ArrayList<Recipe> recipeDataSet = new ArrayList<>();
             for (int i = 0; i < recipeOrder.length; i++) {
+                String seq = recipeOrder[i].getRcpseq();
                 String img = recipeOrder[i].getAtt_FILE_NO_MAIN();
                 String title = recipeOrder[i].getRcpnm();
                 String genre = recipeOrder[i].getRcp_PAT2();
@@ -90,7 +91,7 @@ public class Activity_recipe extends AppCompatActivity {
                 String ingredient = recipeOrder[i].getRcp_PARTS_DTLS();
                 Log.e("MYLOG:", (img + " " + title + " " + genre + " " + amount + " " + time + " " + difficulty + " " + ingredient));
 
-                recipeDataSet.add(new Recipe(img, title, genre, ingredient));
+                recipeDataSet.add(new Recipe(img, title, genre, ingredient, seq));
             }
 
             RecipeViewAdapter recipeViewAdapter = new RecipeViewAdapter(recipeDataSet);
@@ -103,6 +104,8 @@ public class Activity_recipe extends AppCompatActivity {
                 // 예를 들어, 클릭된 레시피 상세 정보 액티비티 시작
                 Intent intent = new Intent(Activity_recipe.this, Activity_recipe_detail.class);
                 intent.putExtra("RECIPE", clickedRecipe.getTitle());
+                intent.putExtra("SEQ", clickedRecipe.getSeq());
+                intent.putExtra("SEPARATOR", "api");
                 startActivity(intent);
             });
 
