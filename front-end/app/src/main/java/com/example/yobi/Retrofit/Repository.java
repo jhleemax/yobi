@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 
 public class Repository {
     private RecipeService recipeService;
-    private static final String BASE_URL = "localhost:8080/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
 
     public Repository() {
         Retrofit retrofit = RetrofitClient.getClient(BASE_URL);

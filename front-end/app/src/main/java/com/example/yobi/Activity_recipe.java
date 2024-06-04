@@ -50,8 +50,8 @@ public class Activity_recipe extends AppCompatActivity {
         });
 
         httpConnectionManager = new HttpConnectionManager(
-                "localhost:8080/api/list",
-                "GET"
+                "http://10.0.2.2:8080/api/list",
+                "POST"
         );
 
         Thread getResponseThread = new Thread(() -> {

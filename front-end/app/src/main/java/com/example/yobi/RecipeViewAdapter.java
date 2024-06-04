@@ -38,9 +38,9 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView recipe_title;
         private final TextView recipe_genre;
-        private final TextView recipe_amount;
-        private final TextView recipe_time;
-        private final TextView recipe_difficulty;
+//        private final TextView recipe_amount;
+//        private final TextView recipe_time;
+//        private final TextView recipe_difficulty;
         private final TextView recipe_ingredient;
         private final ImageView imageView;
 
@@ -51,9 +51,9 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
             // 뷰 초기화
             recipe_title = view.findViewById(R.id.textView_recipe_itemlist_01);
             recipe_genre = view.findViewById(R.id.textView_recipe_itemlist_02);
-            recipe_amount = view.findViewById(R.id.textView_recipe_itemlist_03);
-            recipe_time = view.findViewById(R.id.textView_recipe_itemlist_04);
-            recipe_difficulty = view.findViewById(R.id.textView_recipe_itemlist_05);
+//            recipe_amount = view.findViewById(R.id.textView_recipe_itemlist_03);
+//            recipe_time = view.findViewById(R.id.textView_recipe_itemlist_04);
+//            recipe_difficulty = view.findViewById(R.id.textView_recipe_itemlist_05);
             recipe_ingredient = view.findViewById(R.id.textView_recipe_itemlist_06);
             imageView = view.findViewById(R.id.imageView_recipe_itemlist);
 
@@ -77,9 +77,9 @@ public class RecipeViewAdapter extends RecyclerView.Adapter<RecipeViewAdapter.Vi
             Thread th2 = new Thread(() -> {
                 recipe_title.setText(item.getTitle());
                 recipe_genre.setText(item.getGenre());
-                recipe_amount.setText(item.getAmount());
-                recipe_time.setText(item.getTime());
-                recipe_difficulty.setText(item.getDifficulty());
+//                recipe_amount.setText(item.getAmount());
+//                recipe_time.setText(item.getTime());
+//                recipe_difficulty.setText(item.getDifficulty());
                 recipe_ingredient.setText(item.getIngredient());
             });
 
