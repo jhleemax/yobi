@@ -64,6 +64,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
     String jsonString;
     RecipeOrder recipeOrder;
     Thread dataBindingThread;
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,47 +100,15 @@ public class Activity_recipe_detail extends AppCompatActivity {
         ingredient = (RecyclerView) findViewById(R.id.recyclerView_recipe_detail_ingredient);
         tools = (RecyclerView) findViewById(R.id.recyclerView_recipe_detail_tools);
         order = (RecyclerView) findViewById(R.id.recyclerView_recipe_detail_order);
+        backButton = (Button) findViewById(R.id.appCompatButton_recipe_detail_backspace);
 
-        /*
-        repository = new Repository();
-
-
-        // 특정 레시피 nm으로 가져오기
-        repository.getRecipeByNm(nm, new Callback<RecipeInfo>() {
-                    @Override
-                    public void onResponse(Call<RecipeInfo> call, Response<RecipeInfo> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            recipe = response.body();
-                            // 레시피 처리
-                            Log.d("Activity_recipe_detail", "Recipe: " + recipe.getRCP_NM());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<RecipeInfo> call, Throwable throwable) {
-
-                    }
-                });
-
-        // 특정 레시피 seq로 가져오기 (28자리에 변수 넣기)
-        repository.getRecipeBySeq("28", new Callback<RecipeInfo>() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<RecipeInfo> call, Response<RecipeInfo> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    recipe = response.body();
-                    // 레시피 처리
-                    Log.d("Activity_recipe_detail", "Recipe: " + recipe.getRCP_SEQ());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RecipeInfo> call, Throwable t) {
-                Log.e("Activity_recipe_detail", "Error fetching recipe", t);
+            public void onClick(View v) {
+                finish();
             }
         });
 
-
-         */
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
