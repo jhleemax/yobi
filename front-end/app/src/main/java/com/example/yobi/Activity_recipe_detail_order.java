@@ -1,6 +1,8 @@
 package com.example.yobi;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -10,21 +12,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.Manifest;
+import android.app.Activity;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
+
+import android.speech.*;
+import android.widget.Toast;
 
 public class Activity_recipe_detail_order extends AppCompatActivity {
+
+    // 요청 코드
+    private static final int REQUEST_CODE_STT = 1;
+    // SpeechRecognizer 객체 생성
+    private SpeechRecognizer speechRecognizer;
 
     // Data 객체
     ArrayList<RecipeOrderDetail> recipeOrderDetailArrayList;
@@ -48,9 +66,13 @@ public class Activity_recipe_detail_order extends AppCompatActivity {
             return insets;
         });
 
+
+
         // Intent 정보 받아오기
         recipeOrderDetailArrayList = (ArrayList<RecipeOrderDetail>) getIntent().getSerializableExtra("dataSet");
         order_num = getIntent().getIntExtra("seq_num", 1);
+
+        startSTT();
 
         // 객체 초기화
         nextButton = (AppCompatButton) findViewById(R.id.appCompatButton_recipe_detail_order_next);
@@ -76,6 +98,8 @@ public class Activity_recipe_detail_order extends AppCompatActivity {
         imageMic.setVisibility(View.GONE);
         mic01.setVisibility(View.GONE);
         mic02.setVisibility(View.GONE);
+        start.setVisibility(View.GONE);
+
 
         // 다음 버튼 이벤트
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +132,94 @@ public class Activity_recipe_detail_order extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }   // onCreate
+
+
+
+    public void startSTT() {
+        // STT 인텐트 실행
+        if (SpeechRecognizer.isRecognitionAvailable(this)) {
+            speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+            speechRecognizer.setRecognitionListener(new RecognitionListener() {
+                @Override
+                public void onReadyForSpeech(Bundle params) {
+                    // 준비 완료
+                }
+
+                @Override
+                public void onBeginningOfSpeech() {
+                    // 음성 입력 시작
+                }
+
+                @Override
+                public void onRmsChanged(float rmsdB) {
+                    // 입력 소리 변화
+                }
+
+                @Override
+                public void onBufferReceived(byte[] buffer) {
+                    // 버퍼 데이터 수신
+                }
+
+                @Override
+                public void onEndOfSpeech() {
+                    // 음성 입력 종료
+                }
+
+                @Override
+                public void onError(int error) {
+                    //Toast.makeText(this, "에러 발생: " + error, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onResults(Bundle results) {
+                    ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                    if (matches != null && !matches.isEmpty()) {
+                        description.setText(matches.get(0));
+                    }
+                }
+
+                @Override
+                public void onPartialResults(Bundle partialResults) {
+                    // 부분 결과
+                }
+
+                @Override
+                public void onEvent(int eventType, Bundle params) {
+                    // 이벤트 발생
+                }
+            });
+
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.KOREAN);
+            intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
+            speechRecognizer.startListening(intent);
+        } else {
+            Toast.makeText(this, "음성 인식을 사용할 수 없습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_STT && resultCode == RESULT_OK) {
+            ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            if (results != null && !results.isEmpty()) {
+                String recognizedText = results.get(0);
+                Toast.makeText(this, "인식된 텍스트: " + recognizedText, Toast.LENGTH_LONG).show();
+                if (recognizedText.equals("다음") || recognizedText.equals("다음거") || recognizedText.equals("다음으로") || recognizedText.equals("넘겨") || recognizedText.equals("넘겨줘")) {
+                    Intent intent = new Intent(Activity_recipe_detail_order.this, Activity_recipe_detail_order.class);
+                    intent.putExtra("seq_num", ++order_num);
+                    intent.putExtra("dataSet", recipeOrderDetailArrayList);
+                    startActivity(intent);
+                }
+            }
+        }
+    }
+
+
 
     public static Bitmap getBitmapFromURL(String src) {
         try {
@@ -123,6 +234,14 @@ public class Activity_recipe_detail_order extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (speechRecognizer != null) {
+            speechRecognizer.destroy();
         }
     }
 }
