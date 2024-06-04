@@ -50,7 +50,7 @@ public class Activity_recipe extends AppCompatActivity {
         });
 
         httpConnectionManager = new HttpConnectionManager(
-                "http://ec2-13-125-237-115.ap-northeast-2.compute.amazonaws.com:8081/api/list",
+                "localhost:8080/api/list",
                 "GET"
         );
 

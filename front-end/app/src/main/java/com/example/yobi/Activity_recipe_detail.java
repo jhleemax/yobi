@@ -151,7 +151,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
         });
 
         httpConnectionManager = new HttpConnectionManager(
-                "http://ec2-13-125-237-115.ap-northeast-2.compute.amazonaws.com:8081/api/read/" + recipe_seq,
+                "localhost:8080/recipe/search/api/read/" + recipe_seq,
                 "GET"
         );
 
