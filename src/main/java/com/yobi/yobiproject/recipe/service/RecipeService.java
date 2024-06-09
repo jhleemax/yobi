@@ -18,9 +18,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -30,15 +33,108 @@ public class RecipeService {
     private final MemberRepository memberRepository;
     private final DefRecipeRepository defRecipeRepository;
     private final BookmarkRepository bookmarkRepository;
-    public HttpStatus save(WriteRecipeDTO writeRecipeDTO) {
-        if(memberRepository.findByUserId(writeRecipeDTO.getUserId()) == null) {
-            throw new CustomException(CustomErrorCode.USER_NOT_FOUND);
+    private final String uploadBaseDir = "C:\\Yobi"; // 기본 업로드 디렉토리
+
+    public void save(WriteRecipeDTO writeRecipeDTO, List<MultipartFile> recipeImages) throws IOException {
+        // 새로운 Recipe 엔티티 생성 및 저장
+        Recipe recipe = new Recipe(writeRecipeDTO);
+        Recipe savedRecipe = recipeRepository.save(recipe);
+
+        // 사용자 폴더 경로 생성
+        Path userDir = Paths.get(uploadBaseDir, writeRecipeDTO.getUserId());
+
+        // 사용자가 작성한 레시피의 개수를 가져옴
+        long recipeCount = recipeRepository.countByUserId(writeRecipeDTO.getUserId());
+
+        // 새로운 레시피 폴더 경로 생성
+        Path recipeDir = userDir.resolve(String.valueOf(recipeCount + 1));
+
+        // 폴더가 존재하지 않으면 생성
+        if (!Files.exists(recipeDir)) {
+            Files.createDirectories(recipeDir);
         }
-        else {
-            Recipe recipe = Recipe.toRecipe(writeRecipeDTO);
-            recipeRepository.save(recipe);
-            return HttpStatus.OK;
+
+        // 이미지 저장 및 경로 설정
+        for (int i = 0; i < recipeImages.size(); i++) { // 이미지 개수
+            MultipartFile file = recipeImages.get(i); // 객체 반환
+            if (!file.isEmpty()) {
+                // 고유한 파일 이름 생성
+                String fileExtension = StringUtils.getFilenameExtension(file.getOriginalFilename()); // 파일 확장자 추출
+                String uniqueFileName = UUID.randomUUID().toString() + (fileExtension != null ? "." + fileExtension : ""); // 고유 파일 이름 생성
+                Path filePath = recipeDir.resolve((i + 1) + "_" + uniqueFileName); // recipeDir경로로 저장
+                Files.createDirectories(filePath.getParent()); // 파일 경로의 부모 디렉토리가 존재하지 않는다면 디렉토리 생성
+                file.transferTo(filePath.toFile()); // 이미지를 지정된 경로 "filePath"로 저장
+
+                // 레시피 엔티티에 이미지 경로 설정
+                switch (i) {
+                    case 0:
+                        savedRecipe.setRecipeImage01(filePath.toString());
+                        break;
+                    case 1:
+                        savedRecipe.setRecipeImage02(filePath.toString());
+                        break;
+                    case 2:
+                        savedRecipe.setRecipeImage03(filePath.toString());
+                        break;
+                    case 3:
+                        savedRecipe.setRecipeImage04(filePath.toString());
+                        break;
+                    case 4:
+                        savedRecipe.setRecipeImage05(filePath.toString());
+                        break;
+                    case 5:
+                        savedRecipe.setRecipeImage06(filePath.toString());
+                        break;
+                    case 6:
+                        savedRecipe.setRecipeImage07(filePath.toString());
+                        break;
+                    case 7:
+                        savedRecipe.setRecipeImage08(filePath.toString());
+                        break;
+                    case 8:
+                        savedRecipe.setRecipeImage09(filePath.toString());
+                        break;
+                    case 9:
+                        savedRecipe.setRecipeImage10(filePath.toString());
+                        break;
+                    case 10:
+                        savedRecipe.setRecipeImage11(filePath.toString());
+                        break;
+                    case 11:
+                        savedRecipe.setRecipeImage12(filePath.toString());
+                        break;
+                    case 12:
+                        savedRecipe.setRecipeImage13(filePath.toString());
+                        break;
+                    case 13:
+                        savedRecipe.setRecipeImage14(filePath.toString());
+                        break;
+                    case 14:
+                        savedRecipe.setRecipeImage15(filePath.toString());
+                        break;
+                    case 15:
+                        savedRecipe.setRecipeImage16(filePath.toString());
+                        break;
+                    case 16:
+                        savedRecipe.setRecipeImage17(filePath.toString());
+                        break;
+                    case 17:
+                        savedRecipe.setRecipeImage18(filePath.toString());
+                        break;
+                    case 18:
+                        savedRecipe.setRecipeImage19(filePath.toString());
+                        break;
+                    case 19:
+                        savedRecipe.setRecipeImage20(filePath.toString());
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+
+        // 레시피 엔티티 업데이트
+        recipeRepository.save(savedRecipe);
     }
 
     public HttpStatus Update(UpdateRecipeDTO updateRecipeDTO, int rcpNum) {
