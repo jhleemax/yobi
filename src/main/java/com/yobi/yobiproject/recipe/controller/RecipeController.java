@@ -15,7 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -24,9 +26,19 @@ import java.util.List;
 public class RecipeController {
     private final RecipeService recipeService;
 
-    @PostMapping(value = "/recipe/write") // 레시피 글쓰기
-    public ResponseEntity<?> write(@RequestBody WriteRecipeDTO writeRecipeDTO) {
-        return ResponseEntity.status(recipeService.save(writeRecipeDTO)).build();
+    @PostMapping(value = "recipe/write", consumes = {"multipart/form-data"})
+    public ResponseEntity<?> write(
+            @ModelAttribute WriteRecipeDTO writeRecipeDTO,
+            @RequestParam("recipeImages") List<MultipartFile> recipeImages) {
+        try {
+            // 서비스로 데이터 전송
+            recipeService.save(writeRecipeDTO, recipeImages);
+            return ResponseEntity.noContent().build();
+        } catch (IOException e) {
+            return ResponseEntity.status(500).body("이미지 업로드 중 오류가 발생했습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("레시피 저장 중 오류가 발생했습니다.");
+        }
     }
 
     @PostMapping(value = "/recipe/list")

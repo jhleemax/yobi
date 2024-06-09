@@ -158,75 +158,33 @@ public class Recipe {
     @Column(name = "recipe_image20")
     private String recipeImage20;
 
-    @Builder
-    public static Recipe toRecipe(WriteRecipeDTO writeRecipeDTO) {
-        Recipe recipe = new Recipe();
-        recipe.setUserId(writeRecipeDTO.getUserId());
-        recipe.setRecipeCategory(writeRecipeDTO.getRecipeCategory());
-        recipe.setFoodName(writeRecipeDTO.getFoodName());
-        recipe.setIngredient(writeRecipeDTO.getIngredient());
-        recipe.setMaterial(writeRecipeDTO.getMaterial());
-
-        recipe.setRecipeManual01(writeRecipeDTO.getRecipeManual01());
-        recipe.setRecipeImage01(writeRecipeDTO.getRecipeImage01());
-
-        recipe.setRecipeManual02(writeRecipeDTO.getRecipeManual02());
-        recipe.setRecipeImage02(writeRecipeDTO.getRecipeImage02());
-
-        recipe.setRecipeManual03(writeRecipeDTO.getRecipeManual03());
-        recipe.setRecipeImage03(writeRecipeDTO.getRecipeImage03());
-
-        recipe.setRecipeManual04(writeRecipeDTO.getRecipeManual04());
-        recipe.setRecipeImage04(writeRecipeDTO.getRecipeImage04());
-
-        recipe.setRecipeManual05(writeRecipeDTO.getRecipeManual05());
-        recipe.setRecipeImage05(writeRecipeDTO.getRecipeImage05());
-
-        recipe.setRecipeManual06(writeRecipeDTO.getRecipeManual06());
-        recipe.setRecipeImage06(writeRecipeDTO.getRecipeImage06());
-
-        recipe.setRecipeManual07(writeRecipeDTO.getRecipeManual07());
-        recipe.setRecipeImage07(writeRecipeDTO.getRecipeImage07());
-
-        recipe.setRecipeManual08(writeRecipeDTO.getRecipeManual08());
-        recipe.setRecipeImage08(writeRecipeDTO.getRecipeImage08());
-
-        recipe.setRecipeManual09(writeRecipeDTO.getRecipeManual09());
-        recipe.setRecipeImage09(writeRecipeDTO.getRecipeImage09());
-
-        recipe.setRecipeManual10(writeRecipeDTO.getRecipeManual10());
-        recipe.setRecipeImage10(writeRecipeDTO.getRecipeImage10());
-
-        recipe.setRecipeManual11(writeRecipeDTO.getRecipeManual11());
-        recipe.setRecipeImage11(writeRecipeDTO.getRecipeImage11());
-
-        recipe.setRecipeManual12(writeRecipeDTO.getRecipeManual12());
-        recipe.setRecipeImage12(writeRecipeDTO.getRecipeImage12());
-
-        recipe.setRecipeManual13(writeRecipeDTO.getRecipeManual13());
-        recipe.setRecipeImage13(writeRecipeDTO.getRecipeImage13());
-
-        recipe.setRecipeManual14(writeRecipeDTO.getRecipeManual14());
-        recipe.setRecipeImage14(writeRecipeDTO.getRecipeImage14());
-
-        recipe.setRecipeManual15(writeRecipeDTO.getRecipeManual15());
-        recipe.setRecipeImage15(writeRecipeDTO.getRecipeImage15());
-
-        recipe.setRecipeManual16(writeRecipeDTO.getRecipeManual16());
-        recipe.setRecipeImage16(writeRecipeDTO.getRecipeImage16());
-
-        recipe.setRecipeManual17(writeRecipeDTO.getRecipeManual17());
-        recipe.setRecipeImage17(writeRecipeDTO.getRecipeImage17());
-
-        recipe.setRecipeManual18(writeRecipeDTO.getRecipeManual18());
-        recipe.setRecipeImage18(writeRecipeDTO.getRecipeImage18());
-
-        recipe.setRecipeManual19(writeRecipeDTO.getRecipeManual19());
-        recipe.setRecipeImage19(writeRecipeDTO.getRecipeImage19());
-
-        recipe.setRecipeManual20(writeRecipeDTO.getRecipeManual20());
-        recipe.setRecipeImage20(writeRecipeDTO.getRecipeImage20());
-        return recipe;
+    // 생성자 추가
+    public Recipe(WriteRecipeDTO writeRecipeDTO) {
+        this.userId = writeRecipeDTO.getUserId();
+        this.recipeCategory = writeRecipeDTO.getRecipeCategory();
+        this.foodName = writeRecipeDTO.getFoodName();
+        this.ingredient = writeRecipeDTO.getIngredient();
+        this.material = writeRecipeDTO.getMaterial();
+        this.recipeManual01 = writeRecipeDTO.getRecipeManual01();
+        this.recipeManual02 = writeRecipeDTO.getRecipeManual02();
+        this.recipeManual03 = writeRecipeDTO.getRecipeManual03();
+        this.recipeManual04 = writeRecipeDTO.getRecipeManual04();
+        this.recipeManual05 = writeRecipeDTO.getRecipeManual05();
+        this.recipeManual06 = writeRecipeDTO.getRecipeManual06();
+        this.recipeManual07 = writeRecipeDTO.getRecipeManual07();
+        this.recipeManual08 = writeRecipeDTO.getRecipeManual08();
+        this.recipeManual09 = writeRecipeDTO.getRecipeManual09();
+        this.recipeManual10 = writeRecipeDTO.getRecipeManual10();
+        this.recipeManual11 = writeRecipeDTO.getRecipeManual11();
+        this.recipeManual12 = writeRecipeDTO.getRecipeManual12();
+        this.recipeManual13 = writeRecipeDTO.getRecipeManual13();
+        this.recipeManual14 = writeRecipeDTO.getRecipeManual14();
+        this.recipeManual15 = writeRecipeDTO.getRecipeManual15();
+        this.recipeManual16 = writeRecipeDTO.getRecipeManual16();
+        this.recipeManual17 = writeRecipeDTO.getRecipeManual17();
+        this.recipeManual18 = writeRecipeDTO.getRecipeManual18();
+        this.recipeManual19 = writeRecipeDTO.getRecipeManual19();
+        this.recipeManual20 = writeRecipeDTO.getRecipeManual20();
     }
 
 }
