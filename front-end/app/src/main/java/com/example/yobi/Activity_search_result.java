@@ -49,7 +49,6 @@ public class Activity_search_result extends AppCompatActivity {
         btn_back = findViewById(R.id.appCompatButton_search_result_backspace);
         sv_recipe = findViewById(R.id.searchView_search_result);
         sv_recipe.setQuery(recive_keyword, false);
-        Toast.makeText(Activity_search_result.this, recive_keyword, Toast.LENGTH_LONG).show();
 
         // SearchView에 OnQueryTextListener 설정
         sv_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
