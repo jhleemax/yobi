@@ -22,4 +22,6 @@ public class BookmarkController {
     public ResponseEntity<?> list(@PathVariable("userId") String userId) {
         return ResponseEntity.ok().body(bookmarkService.list(userId));
     }
+
+
 }

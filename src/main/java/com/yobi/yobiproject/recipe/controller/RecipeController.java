@@ -75,7 +75,7 @@ public class RecipeController {
         return ResponseEntity.status(recipeService.Update(updateRecipeDTO,rcpNum)).build();
     }
 
-    @GetMapping(value = "/recipe/search")
+    @PostMapping(value = "/recipe/search")
     public ResponseEntity<?> search(@RequestBody SearchRecipeDTO searchRecipeDTO) { // 레시피 통합조회
         return ResponseEntity.ok().body(recipeService.SearchRecipe(searchRecipeDTO));
     }
