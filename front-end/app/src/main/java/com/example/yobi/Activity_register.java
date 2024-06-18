@@ -67,6 +67,7 @@ public class Activity_register extends AppCompatActivity {
             }
         });
 
+        btn_checkemail.setVisibility(View.GONE);
         cb_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
