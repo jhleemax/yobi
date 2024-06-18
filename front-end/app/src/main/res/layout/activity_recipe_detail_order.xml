@@ -156,7 +156,7 @@
             android:id="@+id/textView_recipe_detail_order_description_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="도마, 조리용 나이프"
+            android:text="대화 모드를 종료하고 싶으면 &quot;그만하기&quot;라고 말해주세요"
             android:textColor="@color/main_theme"
             app:layout_constraintStart_toEndOf="@id/imageView_recipe_detail_order_description"
             app:layout_constraintTop_toTopOf="@id/imageView_recipe_detail_order_description"

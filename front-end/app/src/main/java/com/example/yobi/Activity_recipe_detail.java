@@ -72,6 +72,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
         // 타이틀 가져오는거 테스트용
         textView01 = (TextView) findViewById(R.id.textview_recipe_detail_title);
         textView01.setText(nm);
+
         mainImage = (ImageView) findViewById(R.id.imageView_recipe_detail_01);
         description = (TextView) findViewById(R.id.textView_recipe_detail_description);
         linearLayout01 = (LinearLayout) findViewById(R.id.linearLayout_recipe_detail_01);
