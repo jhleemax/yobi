@@ -20,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Activity_main extends AppCompatActivity {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-    Button acButton_recipe, acButton_community;
+    Button acButton_recipe, acButton_community, acButton_my;
     SearchView sv_search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,15 @@ public class Activity_main extends AppCompatActivity {
 
         // 권한 요청 함수
         requestAudioPermission();
+
+        acButton_my = findViewById(R.id.appCompatButton_main_my);
+        acButton_my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_main.this, Activity_my.class);
+                startActivity(intent);
+            }
+        });
 
         // 서치뷰 터치시 이동
         sv_search = findViewById(R.id.searchView_community);

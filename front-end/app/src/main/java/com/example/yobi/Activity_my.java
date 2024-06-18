@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -15,6 +17,8 @@ public class Activity_my extends AppCompatActivity {
 
     // 컴포넌트
     LinearLayout my_boards;
+
+    ConstraintLayout goHome;
 
     // 데이터
 
@@ -31,12 +35,21 @@ public class Activity_my extends AppCompatActivity {
 
         // 컴포넌트 초기화
         my_boards = findViewById(R.id.linearLayout_my_board);
+        goHome = findViewById(R.id.constraintLayout_my_home);
 
         // 이벤트 리스너
         my_boards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_my.this, Activity_my_boards.class);
+                startActivity(intent);
+            }
+        });
+
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_my.this, Activity_main.class);
                 startActivity(intent);
             }
         });

@@ -48,7 +48,7 @@ public class Activity_recipe_write extends AppCompatActivity {
     ImageRecyclerViewAdaptor imageRecyclerViewAdaptor;
 
     // 컴포넌트
-    AppCompatButton plusImage, submit, plusOrder, plusIngredient;
+    AppCompatButton plusImage, submit, plusOrder, plusIngredient, back;
     EditText title, description;
     TextView textView_description;
     Spinner category;
@@ -78,6 +78,7 @@ public class Activity_recipe_write extends AppCompatActivity {
         plusImage = findViewById(R.id.appCompatButton_recipe_write_imageAddition);
         submit = findViewById(R.id.appCompatButton_recipe_write_submit);
         plusIngredient = findViewById(R.id.appCompatButton_recipe_write_ingredientAddition);
+        back = findViewById(R.id.button_recipe_write_01);
 
         // Spinner 초기화
         String[] array = getResources().getStringArray(R.array.category);
@@ -93,6 +94,13 @@ public class Activity_recipe_write extends AppCompatActivity {
         // recipeNum 받아오기
         Intent intent = getIntent();
         String recipeNum = intent.getStringExtra("recipeNum");
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // 레시피 수정일 경우
         if(recipeNum != null) {

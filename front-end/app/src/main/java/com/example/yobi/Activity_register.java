@@ -60,6 +60,13 @@ public class Activity_register extends AppCompatActivity {
         cb_term5 = findViewById(R.id.checkBox_register_agreement_05);
         cb_term6 = findViewById(R.id.checkBox_register_agreement_06);
 
+        btn_backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         cb_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

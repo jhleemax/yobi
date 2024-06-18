@@ -168,7 +168,7 @@ public class Activity_search_result extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         JSONParseManager jsonParseManager = new JSONParseManager(jsonString);
-        jsonParseManager.splitJSONtoRecipeOrder();
+        jsonParseManager.splitJSON();
 
         RecipeOrder[] recipeOrder = jsonParseManager.getObjectbyRecipeOrder();
         ArrayList<Recipe> recipeDataSet = new ArrayList<>();
