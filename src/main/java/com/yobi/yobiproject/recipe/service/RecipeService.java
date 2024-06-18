@@ -137,6 +137,46 @@ public class RecipeService {
         recipeRepository.save(savedRecipe);
     }
 
+    public Recipe ReadRecipe(int rcpnum) {
+        Recipe recipe = recipeRepository.findByRecipeNum(rcpnum);
+        if (recipe == null) {
+            throw new CustomException(CustomErrorCode.RECIPE_NOT_FOUND);
+        }
+
+        // 파일 경로를 URL로 변환
+        recipe.setRecipeImage01(convertPathToUrl(recipe.getRecipeImage01()));
+        recipe.setRecipeImage02(convertPathToUrl(recipe.getRecipeImage02()));
+        recipe.setRecipeImage03(convertPathToUrl(recipe.getRecipeImage03()));
+        recipe.setRecipeImage04(convertPathToUrl(recipe.getRecipeImage04()));
+        recipe.setRecipeImage05(convertPathToUrl(recipe.getRecipeImage05()));
+        recipe.setRecipeImage06(convertPathToUrl(recipe.getRecipeImage06()));
+        recipe.setRecipeImage07(convertPathToUrl(recipe.getRecipeImage07()));
+        recipe.setRecipeImage08(convertPathToUrl(recipe.getRecipeImage08()));
+        recipe.setRecipeImage09(convertPathToUrl(recipe.getRecipeImage09()));
+        recipe.setRecipeImage10(convertPathToUrl(recipe.getRecipeImage10()));
+        recipe.setRecipeImage11(convertPathToUrl(recipe.getRecipeImage11()));
+        recipe.setRecipeImage12(convertPathToUrl(recipe.getRecipeImage12()));
+        recipe.setRecipeImage13(convertPathToUrl(recipe.getRecipeImage13()));
+        recipe.setRecipeImage14(convertPathToUrl(recipe.getRecipeImage14()));
+        recipe.setRecipeImage15(convertPathToUrl(recipe.getRecipeImage15()));
+        recipe.setRecipeImage16(convertPathToUrl(recipe.getRecipeImage16()));
+        recipe.setRecipeImage17(convertPathToUrl(recipe.getRecipeImage17()));
+        recipe.setRecipeImage18(convertPathToUrl(recipe.getRecipeImage18()));
+        recipe.setRecipeImage19(convertPathToUrl(recipe.getRecipeImage19()));
+        recipe.setRecipeImage20(convertPathToUrl(recipe.getRecipeImage20()));
+
+        return recipe;
+    }
+
+    private String convertPathToUrl(String filePath) {
+        if (filePath == null || filePath.isEmpty()) {
+            return null;
+        }
+        String baseUrl = "http://localhost:8080/images/";
+        String relativePath = filePath.replace("C:\\Yobi\\", "").replace("\\", "/");
+        return baseUrl + relativePath;
+    }
+
     public HttpStatus Update(UpdateRecipeDTO updateRecipeDTO, int rcpNum) {
         Recipe recipe = recipeRepository.findByRecipeNum(rcpNum);
         if(updateRecipeDTO.getUserId().equals(recipe.getUserId())) {
@@ -215,11 +255,6 @@ public class RecipeService {
 
     public List<Recipe> SendRecipe() { // 모든 사용자 레시피
         List<Recipe> recipe = recipeRepository.findAll();
-        return recipe;
-    }
-
-    public Recipe ReadRecipe(int rcpnum) { // 사용자 레시피 상세보기
-        Recipe recipe = recipeRepository.findByRecipeNum(rcpnum);
         return recipe;
     }
 
