@@ -156,7 +156,7 @@ public class Activity_register extends AppCompatActivity {
                 Log.d("RegisterTask", "Response: " + response.toString());
 
                 if (response.length() == 0) {
-                    return responseCode == HttpURLConnection.HTTP_OK ? "Signup successful" : "An error occurred";
+                    return responseCode == HttpURLConnection.HTTP_OK ? "회원가입에 성공했습니다!\n로그인해 주세요." : "An error occurred";
                 }
 
                 JSONObject responseObject = new JSONObject(response.toString());
@@ -182,8 +182,8 @@ public class Activity_register extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.d("RegisterTask", "onPostExecute: " + result);
-            Toast.makeText(Activity_register.this, "회원가입에 성공했습니다!\n로그인해 주세요.", Toast.LENGTH_LONG).show();
-            if (result.equals("Signup successful")) {
+            Toast.makeText(Activity_register.this, result, Toast.LENGTH_LONG).show();
+            if (result.equals("회원가입에 성공했습니다!\n로그인해 주세요.")) {
                 Intent intent = new Intent(Activity_register.this, Activity_login_normal.class);
                 startActivity(intent);
                 finish();
