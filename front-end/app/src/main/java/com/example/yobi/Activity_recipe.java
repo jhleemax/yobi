@@ -17,17 +17,21 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class Activity_recipe extends AppCompatActivity {
 
+    // 데이터
     public static Context context;
-
     HttpConnectionManager httpConnectionManager;
     String jsonString;
 
+    // 컴포넌트
     Button acButton_home;
     TextView textView_recipe_01;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,12 @@ public class Activity_recipe extends AppCompatActivity {
             return insets;
         });
 
+        // 컴포넌트 초기화
         textView_recipe_01 = findViewById(R.id.textView_recipe_01);
+        acButton_home = findViewById(R.id.appCompatButton_recipe_home);
+        floatingActionButton = findViewById(R.id.floatingActionButton_recipe);
+
+        // 이벤트 리스너
         textView_recipe_01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +57,22 @@ public class Activity_recipe extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        acButton_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_recipe.this, Activity_main.class);
+                startActivity(intent);
+            }
+        });
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_recipe.this, Activity_recipe_write.class);
+                startActivity(intent);
+            }
+        });
 
+        // api 조회
         httpConnectionManager = new HttpConnectionManager(
                 "http://10.0.2.2:8080/api/list",
                 "POST"
@@ -60,15 +84,6 @@ public class Activity_recipe extends AppCompatActivity {
 
         context = this;
 
-        acButton_home = findViewById(R.id.appCompatButton_recipe_home);
-        acButton_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Activity_recipe.this, Activity_main.class);
-                startActivity(intent);
-            }
-        });
-
         RecyclerView recyclerView = findViewById(R.id.recyclerView_recipe);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
@@ -76,7 +91,7 @@ public class Activity_recipe extends AppCompatActivity {
 
         Thread jsonParsingThread = new Thread(() -> {
             JSONParseManager jsonParseManager = new JSONParseManager(jsonString);
-            jsonParseManager.splitJSONtoRecipeOrder();
+            jsonParseManager.splitJSON();
 
             RecipeOrder[] recipeOrder = jsonParseManager.getObjectbyRecipeOrder();
             ArrayList<Recipe> recipeDataSet = new ArrayList<>();

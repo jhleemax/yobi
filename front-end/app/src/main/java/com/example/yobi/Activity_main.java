@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Activity_main extends AppCompatActivity {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
-    Button acButton_recipe, acButton_community;
+    Button acButton_recipe, acButton_community, acButton_my;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,15 @@ public class Activity_main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_main.this, Activity_community.class);
+                startActivity(intent);
+            }
+        });
+
+        acButton_my = findViewById(R.id.appCompatButton_main_my);
+        acButton_my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_main.this, Activity_my.class);
                 startActivity(intent);
             }
         });

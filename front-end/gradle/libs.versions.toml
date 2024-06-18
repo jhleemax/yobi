@@ -14,6 +14,7 @@ glide = "5.0.0-rc01"
 picasso = "2.71828"
 retrofit = "2.11.0"
 circleimageview = "3.1.0"
+jsonSimple = "1.1.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -30,6 +31,7 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }
+json-simple = { group = "com.googlecode.json-simple", name = "json-simple", version.ref = "jsonSimple" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

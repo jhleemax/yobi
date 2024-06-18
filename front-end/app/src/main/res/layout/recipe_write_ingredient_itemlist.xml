@@ -24,6 +24,17 @@
         android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textView_recipe_write_ingredient_itemlist_03"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/textView_recipe_write_ingredient_itemlist_03"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:text="X"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"/>
     <TextView

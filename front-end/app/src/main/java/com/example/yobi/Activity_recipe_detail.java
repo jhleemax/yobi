@@ -8,8 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
@@ -25,28 +23,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.example.yobi.Retrofit.Repository;
 import com.example.yobi.Retrofit.dto.RecipeInfo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import com.bumptech.glide.Glide;
 
 public class Activity_recipe_detail extends AppCompatActivity {
     private Repository repository;
@@ -133,7 +119,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
         Thread jsonParsingThread = new Thread(() -> {
 
             JSONParseManager jsonParseManager = new JSONParseManager(jsonString);
-            jsonParseManager.splitJSONtoRecipeOrder();
+            jsonParseManager.splitJSON();
 
             recipeOrder = jsonParseManager.getObjectbyRecipeOrder()[0];
 
