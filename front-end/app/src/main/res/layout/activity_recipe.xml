@@ -204,6 +204,7 @@
         android:layout_marginHorizontal="16dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"

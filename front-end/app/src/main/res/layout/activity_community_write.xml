@@ -41,6 +41,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/appCompatButton_community_write_submit"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:text="등록"
@@ -84,15 +85,6 @@
                     android:layout_marginTop="16dp"
                     android:src="@drawable/recipe_write_imageview_src"
                     android:background="@drawable/recipe_write_imageview_background" />
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/appCompatButton_community_write_imageAddition"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/recipe_write_button_plus"
-                    app:layout_constraintStart_toEndOf="@id/imageView_community_write_addition"
-                    app:layout_constraintTop_toTopOf="@id/imageView_community_write_addition"
-                    app:layout_constraintBottom_toBottomOf="@id/imageView_community_write_addition"
-                    android:layout_marginStart="32dp"/>
 
                 <View
                     android:id="@+id/view_community_write_01"
