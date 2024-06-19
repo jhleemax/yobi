@@ -124,9 +124,11 @@ public class Activity_recipe_detail extends AppCompatActivity {
             JSONParseManager jsonParseManager = new JSONParseManager(jsonString);
             jsonParseManager.splitJSON();
 
-            recipeOrder = jsonParseManager.getObjectbyRecipeOrder()[0];
+            // api 레시피 일 경우
+            if(separator.equals("api")) {
+                recipeOrder = jsonParseManager.getObjectbyRecipeOrder()[0];
 
-            // 레시피 재료 파싱 파트(현재 비활성화)
+                // 레시피 재료 파싱 파트(현재 비활성화)
             /*
             String json = recipeOrder.getRcp_PARTS_DTLS();
             String[] ingredients = json.split("\n");
@@ -165,117 +167,224 @@ public class Activity_recipe_detail extends AppCompatActivity {
             recyclerView.setAdapter(recipeIngredientViewAdaptor);
              */
 
-            // 조리 순서 파싱(노가다를 안 하는 경우는 문자열로 조작)
-            recipeOrderDetails = new ArrayList<RecipeOrderDetail>();
+                // 조리 순서 파싱(노가다를 안 하는 경우는 문자열로 조작)
+                recipeOrderDetails = new ArrayList<RecipeOrderDetail>();
 
-            Log.e("RecipeDetail 06", recipeOrder.getManual06());
-            Log.e("RecipeDetail 06 img", recipeOrder.getManual_IMG06());
-            Log.e("RecipeDetail 07", recipeOrder.getManual07());
-            Log.e("RecipeDetail 07 img", recipeOrder.getManual_IMG07());
-            Log.e("RecipeDetail 07 equals", Boolean.toString(recipeOrder.getManual07().equals("")));
-            Log.e("RecipeDetail 07 isEmpty", Boolean.toString(recipeOrder.getManual07().isEmpty()));
-            if(!(recipeOrder.getManual01().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG01(), recipeOrder.getManual01()));
-            }
-            if(!(recipeOrder.getManual02().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG02(), recipeOrder.getManual02()));
-            }
-            if(!(recipeOrder.getManual03().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG03(), recipeOrder.getManual03()));
-            }
-            if(!(recipeOrder.getManual04().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG04(), recipeOrder.getManual04()));
-            }
-            if(!(recipeOrder.getManual05().isEmpty())) {
-                Log.e("RecipeDetail05", "RUN");
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG05(), recipeOrder.getManual05()));
-            }
-            if(!(recipeOrder.getManual06().isEmpty())) {
-                Log.e("RecipeDetail06", "RUN");
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG06(), recipeOrder.getManual06()));
-            }
-            if(!(recipeOrder.getManual07().isEmpty())) {
-                Log.e("RecipeDetail07", "RUN");
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG07(), recipeOrder.getManual07()));
-            }
-            if(!(recipeOrder.getManual08().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG08(), recipeOrder.getManual08()));
-            }
-            if(!(recipeOrder.getManual09().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG09(), recipeOrder.getManual09()));
-            }
-            if(!(recipeOrder.getManual10().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG10(), recipeOrder.getManual10()));
-            }
-            if(!(recipeOrder.getManual11().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG11(), recipeOrder.getManual11()));
-            }
-            if(!(recipeOrder.getManual12().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG12(), recipeOrder.getManual12()));
-            }
-            if(!(recipeOrder.getManual13().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG13(), recipeOrder.getManual13()));
-            }
-            if(!(recipeOrder.getManual14().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG14(), recipeOrder.getManual14()));
-            }
-            if(!(recipeOrder.getManual15().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG15(), recipeOrder.getManual15()));
-            }
-            if(!(recipeOrder.getManual16().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG16(), recipeOrder.getManual16()));
-            }
-            if(!(recipeOrder.getManual17().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG17(), recipeOrder.getManual17()));
-            }
-            if(!(recipeOrder.getManual18().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG18(), recipeOrder.getManual18()));
-            }
-            if(!(recipeOrder.getManual19().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG19(), recipeOrder.getManual19()));
-            }
-            if(!(recipeOrder.getManual20().isEmpty())) {
-                recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG20(), recipeOrder.getManual20()));
-            }
+                Log.e("RecipeDetail 06", recipeOrder.getManual06());
+                Log.e("RecipeDetail 06 img", recipeOrder.getManual_IMG06());
+                Log.e("RecipeDetail 07", recipeOrder.getManual07());
+                Log.e("RecipeDetail 07 img", recipeOrder.getManual_IMG07());
+                Log.e("RecipeDetail 07 equals", Boolean.toString(recipeOrder.getManual07().equals("")));
+                Log.e("RecipeDetail 07 isEmpty", Boolean.toString(recipeOrder.getManual07().isEmpty()));
+                if(!(recipeOrder.getManual01().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG01(), recipeOrder.getManual01()));
+                }
+                if(!(recipeOrder.getManual02().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG02(), recipeOrder.getManual02()));
+                }
+                if(!(recipeOrder.getManual03().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG03(), recipeOrder.getManual03()));
+                }
+                if(!(recipeOrder.getManual04().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG04(), recipeOrder.getManual04()));
+                }
+                if(!(recipeOrder.getManual05().isEmpty())) {
+                    Log.e("RecipeDetail05", "RUN");
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG05(), recipeOrder.getManual05()));
+                }
+                if(!(recipeOrder.getManual06().isEmpty())) {
+                    Log.e("RecipeDetail06", "RUN");
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG06(), recipeOrder.getManual06()));
+                }
+                if(!(recipeOrder.getManual07().isEmpty())) {
+                    Log.e("RecipeDetail07", "RUN");
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG07(), recipeOrder.getManual07()));
+                }
+                if(!(recipeOrder.getManual08().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG08(), recipeOrder.getManual08()));
+                }
+                if(!(recipeOrder.getManual09().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG09(), recipeOrder.getManual09()));
+                }
+                if(!(recipeOrder.getManual10().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG10(), recipeOrder.getManual10()));
+                }
+                if(!(recipeOrder.getManual11().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG11(), recipeOrder.getManual11()));
+                }
+                if(!(recipeOrder.getManual12().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG12(), recipeOrder.getManual12()));
+                }
+                if(!(recipeOrder.getManual13().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG13(), recipeOrder.getManual13()));
+                }
+                if(!(recipeOrder.getManual14().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG14(), recipeOrder.getManual14()));
+                }
+                if(!(recipeOrder.getManual15().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG15(), recipeOrder.getManual15()));
+                }
+                if(!(recipeOrder.getManual16().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG16(), recipeOrder.getManual16()));
+                }
+                if(!(recipeOrder.getManual17().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG17(), recipeOrder.getManual17()));
+                }
+                if(!(recipeOrder.getManual18().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG18(), recipeOrder.getManual18()));
+                }
+                if(!(recipeOrder.getManual19().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG19(), recipeOrder.getManual19()));
+                }
+                if(!(recipeOrder.getManual20().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(recipeOrder.getManual_IMG20(), recipeOrder.getManual20()));
+                }
 
-            RecipeOrderDetailViewAdaptor recipeOrderDetailViewAdaptor = new RecipeOrderDetailViewAdaptor(recipeOrderDetails);
-            order.setAdapter(recipeOrderDetailViewAdaptor);
-        });
+                RecipeOrderDetailViewAdaptor recipeOrderDetailViewAdaptor = new RecipeOrderDetailViewAdaptor(recipeOrderDetails);
+                order.setAdapter(recipeOrderDetailViewAdaptor);
 
-        // api 레시피일 경우
-        if(data_receive.getStringExtra("SEPARATOR").equals("api")) {
-                // 썸네일
                 dataBindingThread = new Thread(() -> {
-                Bitmap thumbnail = getBitmapFromURL(recipeOrder.getAtt_FILE_NO_MK());
-                mainImage.post(() -> mainImage.setImageBitmap(thumbnail));
+                    Bitmap thumbnail = getBitmapFromURL(recipeOrder.getAtt_FILE_NO_MK());
+                    mainImage.post(() -> mainImage.setImageBitmap(thumbnail));
 //            Log.e("IMAGE_URL", recipeOrder.getAtt_FILE_NO_MK());
 
-                // 비가시 처리
-                linearLayout01.setVisibility(View.GONE);
-                textViewTools.setVisibility(View.GONE);
-                textViewIngredient.setVisibility(View.GONE);
-                ingredient.setVisibility(View.GONE);
-                tools.setVisibility(View.GONE);
+                    // 비가시 처리
+                    linearLayout01.setVisibility(View.GONE);
+                    textViewTools.setVisibility(View.GONE);
+                    textViewIngredient.setVisibility(View.GONE);
+                    ingredient.setVisibility(View.GONE);
+                    tools.setVisibility(View.GONE);
 
-                // 프로필 이미지
-                profileImg.setBackgroundColor(getColor(R.color.main_theme));
-                Drawable profile = getDrawable(R.drawable.yobi_profile);
-                profileImg.setImageDrawable(profile);
+                    // 프로필 이미지
+                    profileImg.setBackgroundColor(getColor(R.color.main_theme));
+                    Drawable profile = getDrawable(R.drawable.yobi_profile);
+                    profileImg.setImageDrawable(profile);
 
-                // 프로필 이름
-                profileName.setText("YOBI Official");
-                profileDescription.setText("YOBI 공식 프로필 입니다");
+                    // 프로필 이름
+                    profileName.setText("YOBI Official");
+                    profileDescription.setText("YOBI 공식 프로필 입니다");
 
-                // 레시피 설명
-                description.setText(recipeOrder.getRcp_NA_TIP());
+                    // 레시피 설명
+                    description.setText(recipeOrder.getRcp_NA_TIP());
 
-                //LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
-                //recyclerView.setLayoutManager(linearLayoutManager);
+                    //LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
+                    //recyclerView.setLayoutManager(linearLayoutManager);
 
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
-                order.setLayoutManager(linearLayoutManager);
-            });
-        }
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
+                    order.setLayoutManager(linearLayoutManager);
+                });
+            } else if(separator.equals("recipe")) { // 사용자 레시피일 경우
+                userRecipe = jsonParseManager.getObjectbyUserRecipe()[0];
+
+                // 조리 순서 파싱(노가다를 안 하는 경우는 문자열로 조작)
+                recipeOrderDetails = new ArrayList<RecipeOrderDetail>();
+                /*
+                Log.e("RecipeDetail 06", recipeOrder.getManual06());
+                Log.e("RecipeDetail 06 img", recipeOrder.getManual_IMG06());
+                Log.e("RecipeDetail 07", recipeOrder.getManual07());
+                Log.e("RecipeDetail 07 img", recipeOrder.getManual_IMG07());
+                Log.e("RecipeDetail 07 equals", Boolean.toString(recipeOrder.getManual07().equals("")));
+                Log.e("RecipeDetail 07 isEmpty", Boolean.toString(recipeOrder.getManual07().isEmpty()));
+                 */
+                if(userRecipe.getRecipeImage01() != null && !(userRecipe.getRecipeImage01().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage01(), userRecipe.getRecipeManual01()));
+                }
+                if(userRecipe.getRecipeImage02() != null && !(userRecipe.getRecipeImage02().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage02(), userRecipe.getRecipeManual02()));
+                }
+                if(userRecipe.getRecipeImage03() != null && !(userRecipe.getRecipeImage03().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage03(), userRecipe.getRecipeManual03()));
+                }
+                if(userRecipe.getRecipeImage04() != null && !(userRecipe.getRecipeImage04().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage04(), userRecipe.getRecipeManual04()));
+                }
+                if(userRecipe.getRecipeImage05() != null && !(userRecipe.getRecipeImage05().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage05(), userRecipe.getRecipeManual05()));
+                }
+                if(userRecipe.getRecipeImage06() != null && !(userRecipe.getRecipeImage06().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage06(), userRecipe.getRecipeManual06()));
+                }
+                if(userRecipe.getRecipeImage07() != null && !(userRecipe.getRecipeImage07().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage07(), userRecipe.getRecipeManual07()));
+                }
+                if(userRecipe.getRecipeImage08() != null && !(userRecipe.getRecipeImage08().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage08(), userRecipe.getRecipeManual08()));
+                }
+                if(userRecipe.getRecipeImage09() != null && !(userRecipe.getRecipeImage09().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage09(), userRecipe.getRecipeManual09()));
+                }
+                if(userRecipe.getRecipeImage10() != null && !(userRecipe.getRecipeImage10().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage10(), userRecipe.getRecipeManual10()));
+                }
+                if(userRecipe.getRecipeImage11() != null && !(userRecipe.getRecipeImage11().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage11(), userRecipe.getRecipeManual11()));
+                }
+                if(userRecipe.getRecipeImage12() != null && !(userRecipe.getRecipeImage12().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage12(), userRecipe.getRecipeManual12()));
+                }
+                if(userRecipe.getRecipeImage13() != null && !(userRecipe.getRecipeImage13().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage13(), userRecipe.getRecipeManual13()));
+                }
+                if(userRecipe.getRecipeImage14() != null && !(userRecipe.getRecipeImage14().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage14(), userRecipe.getRecipeManual14()));
+                }
+                if(userRecipe.getRecipeImage15() != null && !(userRecipe.getRecipeImage15().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage15(), userRecipe.getRecipeManual15()));
+                }
+                if(userRecipe.getRecipeImage16() != null && !(userRecipe.getRecipeImage16().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage16(), userRecipe.getRecipeManual16()));
+                }
+                if(userRecipe.getRecipeImage17() != null && !(userRecipe.getRecipeImage17().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage17(), userRecipe.getRecipeManual17()));
+                }
+                if(userRecipe.getRecipeImage18() != null && !(userRecipe.getRecipeImage18().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage18(), userRecipe.getRecipeManual18()));
+                }
+                if(userRecipe.getRecipeImage19() != null && !(userRecipe.getRecipeImage19().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage19(), userRecipe.getRecipeManual19()));
+                }
+                if(userRecipe.getRecipeImage20() != null && !(userRecipe.getRecipeImage20().isEmpty())) {
+                    recipeOrderDetails.add(new RecipeOrderDetail(userRecipe.getRecipeImage20(), userRecipe.getRecipeManual20()));
+                }
+
+                RecipeOrderDetailViewAdaptor recipeOrderDetailViewAdaptor = new RecipeOrderDetailViewAdaptor(recipeOrderDetails);
+                order.setAdapter(recipeOrderDetailViewAdaptor);
+
+                dataBindingThread = new Thread(() -> {
+                    Bitmap thumbnail = getBitmapFromURL(userRecipe.getRecipeImage01());
+                    mainImage.post(() -> mainImage.setImageBitmap(thumbnail));
+//            Log.e("IMAGE_URL", recipeOrder.getAtt_FILE_NO_MK());
+
+                    // 비가시 처리
+                    linearLayout01.setVisibility(View.GONE);
+                    textViewTools.setVisibility(View.GONE);
+                    textViewIngredient.setVisibility(View.GONE);
+                    ingredient.setVisibility(View.GONE);
+                    tools.setVisibility(View.GONE);
+                    description.setVisibility(View.GONE);
+
+                    // 프로필 이미지
+                    //profileImg.setBackgroundColor(getColor(R.color.main_theme));
+                    //Drawable profile = getDrawable(R.drawable.yobi_profile);
+                    //profileImg.setImageDrawable(profile);
+
+                    // 프로필 이름
+                    profileName.setText("사용자");
+                    profileDescription.setText("사용자 프로필 입니다");
+
+                    // 레시피 설명
+                    //description.setText(userRecipe.get);
+
+                    //LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
+                    //recyclerView.setLayoutManager(linearLayoutManager);
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
+                    order.setLayoutManager(linearLayoutManager);
+                });
+            }
+        });
+
+        // api 레시피일 경우 프로필 처리
 
         try {
             getResponseThread.start();

@@ -55,7 +55,6 @@ public class StaggeredRecyclerViewAdaptor extends RecyclerView.Adapter<Staggered
             more = view.findViewById(R.id.staggered_more);
 
             // itemView에 클릭 리스너 부착
-            /*
             view.setOnClickListener(v -> {
                 if (listener != null) {
                     int position = getAdapterPosition();
@@ -64,7 +63,6 @@ public class StaggeredRecyclerViewAdaptor extends RecyclerView.Adapter<Staggered
                     }
                 }
             });
-             */
 
             // more 버튼 리스너
             more.setOnClickListener(v -> {
