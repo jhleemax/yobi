@@ -79,7 +79,9 @@ public class Activity_my_boards extends AppCompatActivity {
             UserRecipe[] userRecipes = jsonParseManager.getObjectbyUserRecipe();
             ArrayList<Board> recipeDataSet = new ArrayList<>();
             for (int i = 0; i < userRecipes.length; i++) {
-                String thumbnail = userRecipes[i].getRecipeImage01();
+                //String thumbnail = userRecipes[i].getRecipeImage01();
+                String thumbnail = "http://10.0.2.2:8080/images/test/2/1_eeca2e12-dc15-4056-adc8-a293787c23a2.jpg";
+                Log.e("URL : ", thumbnail);
                 String title = userRecipes[i].getFoodName();
                 String profileImg = "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00108_1.png";
                 String userId = userRecipes[i].getUserId();

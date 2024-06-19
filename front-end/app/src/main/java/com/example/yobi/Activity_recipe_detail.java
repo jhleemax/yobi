@@ -49,6 +49,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
     HttpConnectionManager httpConnectionManager;
     String jsonString;
     RecipeOrder recipeOrder;
+    UserRecipe userRecipe;
     Thread dataBindingThread;
     Button backButton;
 
@@ -68,6 +69,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
         data_receive = getIntent();
         String nm = data_receive.getStringExtra("RECIPE");
         String recipe_seq = data_receive.getStringExtra("SEQ"); // 시퀀스 가져오기
+        String separator = data_receive.getStringExtra("SEPARATOR");
 
         // 타이틀 가져오는거 테스트용
         textView01 = (TextView) findViewById(R.id.textview_recipe_detail_title);
@@ -107,7 +109,7 @@ public class Activity_recipe_detail extends AppCompatActivity {
         });
 
         httpConnectionManager = new HttpConnectionManager(
-                "http://10.0.2.2:8080/api/read/" + recipe_seq,
+                "http://10.0.2.2:8080/" + separator + "/read/" + recipe_seq,
                 "GET"
         );
 

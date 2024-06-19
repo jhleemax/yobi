@@ -665,7 +665,6 @@ public class Activity_recipe_write extends AppCompatActivity {
 
                         }
                          */
-
                     } catch (UnsupportedEncodingException e) {
                         throw new RuntimeException(e);
                     }
@@ -674,6 +673,8 @@ public class Activity_recipe_write extends AppCompatActivity {
                         httpConnectionManager2.doPostbyFormData(formData);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
+                    } finally {
+                        finish();
                     }
                 }
             });
