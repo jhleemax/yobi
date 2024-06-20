@@ -41,7 +41,7 @@ public class MemberController {
     }
 
     @PostMapping(value ="/user/delete")
-    public ResponseEntity<?> deleteUser(@RequestBody LoginMemberDTO loginMemberDTO) { // 회원탈퇴(DTO 재사용좀 할게요 ㅎ..)
+    public ResponseEntity<?> deleteUser(@RequestBody LoginMemberDTO loginMemberDTO) {
         return ResponseEntity.status(memberService.delete(loginMemberDTO)).body("회원탈퇴 성공");
     }
 }

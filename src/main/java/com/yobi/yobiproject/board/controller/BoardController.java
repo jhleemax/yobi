@@ -18,7 +18,7 @@ public class BoardController {
     public ResponseEntity<?> write(@RequestBody BoardDTO boardDTO) { // 커뮤니티 글 작성
         return ResponseEntity.status(boardService.save(boardDTO)).build();
     }
-    @GetMapping(value = "/board/list")
+    @PostMapping(value = "/board/list")
     public ResponseEntity<?> list() { // 커뮤니티 글 전체 반환
         return ResponseEntity.ok().body(boardService.list());
     }
